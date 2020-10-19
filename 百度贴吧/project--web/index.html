@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="posts">
+            <div class="headBox">
+                <div class="headImgBox">
+                    <img class="headImg" src="./img/default.jpg" alt="">
+                </div>
+                <div class="userBox">
+                    <div class="userName">艾滋病死亡</div>
+                    <div class="time">
+                        <div>王思聪吧</div>
+                        <div>|</div>
+                        <div>2020-10-17 20:50:17</div>
+                    </div>
+                </div>
+            </div>
+            <h4>艾滋病</h4>
+            <p class="content">艾滋病</p>
+            <div class="img-box">
+                <div>
+                    <img src="https://dss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3186208452,3395197656&fm=202&mola=new&crop=v1"
+                        alt="">
+                </div>
+                <div>
+                    <img src="https://dss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3186208452,3395197656&fm=202&mola=new&crop=v1"
+                        alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/jquery.js"></script>
+    <script>
+        window.WebSocket=function(){}
+        var pn = 1
+        var ps = 3
+        $.ajax({
+            url: 'http://localhost:3000/posts/list',
+            type: 'get',
+            data: {
+                pn,
+                ps
+            },
+            success: function (data) {
+                console.log(data)
+                
+                for (let i = 0; i < data[0].length; i++) {
+                    $('.box').append(`
+                    <div class="posts">
+                        <div class="headBox">
+                            <div class="headImgBox">
+                                <img class="headImg" src="${data[i+1][0].headImg}" alt="">
+                            </div>
+                            <div class="userBox">
+                                <div class="userName">${data[i+1][0].nickname}</div>
+                                <div class="time">
+                                    <div>王思聪吧</div>
+                                    <div>|</div>
+                                    <div>${data[0][i].pubTime}</div>
+                                </div>
+                            </div>
+                        </div>
+                            <h4>${data[0][i].headline}</h4>
+                            <p class="content">${data[0][i].content}</p>
+                            <div class="img-box">
+                                <div>
+                                    <img src="${data[0][i].image[0]}"
+                                        alt="">
+                                </div>
+                                <div>
+                                    <img src="${data[0][i].image[1]}"
+                                        alt="">
+                                </div>
+                                <div>
+                                    <img src="${data[0][i].image[2]}"
+                                        alt="">
+                                </div>
+                            </div>
+                    </div>`)
+            
+                    $($('.posts')[i]).click(() => {
+                        location.href = `/detail.html?id=${data[i]._id}`
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
