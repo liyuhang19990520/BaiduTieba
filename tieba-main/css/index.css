@@ -1,0 +1,219 @@
+header {
+  height: 0.45rem;
+  line-height: 0.45rem;
+  background-color: #262b42;
+  position: relative;
+  font-size: 0.18rem;
+}
+
+header .left-arrow {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0.1rem;
+  border: 0.02rem solid #a3b4cc;
+  border-width: 0.02rem 0 0 0.02rem;
+  width: 0.08rem;
+  height: 0.08rem;
+  margin: -0.05rem 0 0 0;
+  -webkit-transform: scale(1) rotate(-50deg) skew(-10deg) translateZ(0);
+  transform: scale(1) rotate(-50deg) skew(-10deg) translateZ(0);
+}
+
+header img {
+  margin-left: 0.2rem;
+  margin-top: -0.02rem;
+}
+
+header .username {
+  color: #cfd8e5;
+  position: relative;
+}
+
+.top {
+  height: 1.2rem;
+  background: url(https://tb2.bdstatic.com/tb/mobile/suser/img/home_card_back_6cdfca5.jpg) no-repeat;
+  background-size: cover;
+}
+
+.top img {
+  width: 0.74rem;
+  height: 0.74rem;
+  border-radius: 50%;
+  border: 0.03rem solid #fff;
+  float: left;
+  margin: 0.2rem 0.1rem 0 0.1rem;
+}
+
+.top .content {
+  color: #fff;
+  font-size: 0.12rem;
+  float: left;
+}
+
+.top .username {
+  font-size: 0.16rem;
+  margin: 0.2rem 0 0.05rem 0;
+}
+
+.top .content .niao {
+  width: 0.15rem;
+  height: 0.15rem;
+  display: inline-block;
+  background: url(https://tb2.bdstatic.com/tb/mobile/suser/img/home_card_rank_6178b66.png) no-repeat;
+  background-size: 0.2rem auto;
+  background-position: 0 -1.2rem;
+  vertical-align: bottom;
+}
+
+.top .desc {
+  margin-bottom: 0.1rem;
+}
+
+.top .content .edit {
+  width: 0.99rem;
+  height: 0.3rem;
+  background-color: #f1f3f6;
+  color: #262626;
+  display: inline-block;
+  border-radius: 0.03rem;
+}
+
+.top .edit-i {
+  width: 0.2rem;
+  height: 0.18rem;
+  line-height: 0.18rem;
+  float: left;
+  background: url(https://tb2.bdstatic.com/tb/mobile/suser/img/home_icon_29ee3a4.png) no-repeat;
+  background-size: 0.2rem auto;
+  background-position: 0 -1.11rem;
+  margin: 0.065rem 0 0 0.15rem;
+}
+
+.top .edit .text {
+  float: left;
+  margin: 0.06rem 0 0 0.03rem;
+}
+
+.top .content .chat {
+  width: 0.87rem;
+  height: 0.3rem;
+  background-color: #297ee6;
+  display: inline-block;
+  border-radius: 0.03rem;
+  margin-left: 0.02rem;
+}
+
+.top .content .chat-i {
+  width: 0.2rem;
+  height: 0.18rem;
+  float: left;
+  background: url(https://tb2.bdstatic.com/tb/mobile/suser/img/home_icon_29ee3a4.png) no-repeat;
+  background-size: 0.2rem auto;
+  background-position: 0 -0.25rem;
+  margin: 0.065rem 0 0 0.15rem;
+}
+
+.top .chat .text {
+  float: left;
+  margin: 0.06rem 0 0 0.03rem;
+}
+
+main {
+  padding: 0 0.1rem;
+  color: #262626;
+}
+
+main nav {
+  line-height: 0.2rem;
+  font-size: 0.12rem;
+  text-align: center;
+}
+
+main nav li {
+  width: 25%;
+  float: left;
+  padding: 0.03rem 0;
+  color: #3361a7;
+  box-sizing: border-box;
+  border-bottom: 0.02rem solid #eee;
+  position: relative;
+}
+
+main nav li :first-child {
+  font-size: 0.16rem;
+}
+
+main nav li:nth-child(-n+3)::after {
+  width: 0.01rem;
+  height: 0.2rem;
+  content: '';
+  position: absolute;
+  background-color: #eee;
+  display: block;
+  right: 0;
+  top: 0.13rem;
+}
+
+main nav li.active {
+  color: #3381e3;
+  border-bottom: 0.02rem solid #3381e3;
+}
+
+main .content {
+  font-size: 0.16rem;
+}
+
+main .content>ul>li {
+  display: none;
+}
+
+main .content>ul>li:first-of-type>ul>li {
+  margin-top: 0.1rem;
+  border-bottom: 0.01rem solid #eee;
+}
+
+main .content>ul>li.active {
+  display: block;
+}
+
+main .content .tiezi {
+  padding: 0.1rem;
+  margin: 0.1rem 0;
+  background-color: rgb(242, 243, 244);
+}
+
+main .content .con {
+  font-size: 0.14rem;
+}
+
+main .content>ul>li:nth-of-type(1)>ul>li img {
+  width: 2rem;
+  height: 2rem;
+  margin: 0.1rem 0;
+}
+
+main .guanzhu,
+main .fensi {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+main .guanzhu>li,
+main .fensi>li {
+  width: 33.33%;
+  height: 1rem;
+  border-right: 0.01rem solid #eee;
+  border-bottom: 0.01rem solid #eee;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 0.12rem;
+}
+
+main .guanzhu img,
+main .fensi img {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  margin: 0.15rem 0 0.05rem 0;
+}
