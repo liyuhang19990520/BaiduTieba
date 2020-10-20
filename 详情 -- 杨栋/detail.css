@@ -1,0 +1,203 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 26.6667vw;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+body {
+    /* background: rgb(56, 236, 191); */
+    font-size: 0.16rem;
+    overflow-x: hidden;
+    max-width: 100vw;
+    background: #F5F5F5;
+}
+.topBox{
+    background: #FFF;
+    height: 0.45rem;
+    line-height: 0.45rem;
+    /* border-bottom: 0.01rem #000 solid; */
+    position: relative;
+    font-size: 0.18rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.1rem;
+    position: relative;
+}
+.topBox img{
+    width: 0.22rem;
+    height: 0.22rem;
+}
+#main{
+    position: absolute;
+    left: 0.5rem;
+}
+.box{
+    background: #FFF;
+
+}
+.barName{
+    font-size: 0.17rem;
+    display: flex;
+    flex-direction: row;
+}
+.headBox{
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    padding:0.1rem 0.1rem;
+    align-items: center;
+}
+.headImgBox{
+   width: 0.4rem;
+   height: 0.4rem;
+   border-radius: 50%;
+   overflow: hidden;
+}
+.headImg{
+    width: 0.4rem;
+}
+.userBox{
+    width: 2.2rem;
+    font-size: 0.15rem;
+    margin:0 0.05rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.05rem 0;
+}
+.userName{
+    padding-bottom: 0.05rem;
+}
+.time{
+    display: flex;
+    flex-direction: row;
+    font-size: 0.1rem;
+    align-items: flex-start;
+    color: #999;
+}
+.content{
+    max-width: 94vw;
+    text-align: justify;
+    margin: 0 auto;
+    font-size: 0.16rem;
+    padding-bottom: 0.1rem;
+}
+.img-box{
+    max-width: 94vw;
+    margin: 0 auto;
+}
+.img-box img{
+    width: 100%;
+    border-radius: 3%;
+}
+.interactionBox{
+    background: #fff;
+    max-width: 94vw;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem 0.55rem;
+}
+.interactionBox img{
+    width: 0.27rem;
+}
+.collection{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.1rem;
+    align-items: center;
+}
+.comment{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.1rem;
+    align-items: center;
+}
+.thumbsUp{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.1rem;
+    align-items: center;
+}
+
+.commentBox{
+    background: #fff;
+    margin-top: 0.05rem;
+}
+/* 选项卡 */
+button {
+    width: 1rem;
+    height: 0.5rem;
+    border: none;
+    outline: none;
+    background: #fff;
+    font-size: 0.15rem;
+}
+
+.all {
+    width: 300px;
+    height: 100px;
+    display: none;
+}
+
+button.active {
+   font-weight: 900;
+}
+
+.all.active {
+    display: block;
+}
+
+/* 评论用户 */
+.commentUser{
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    padding:0.1rem 0.1rem;
+    align-items: center;
+}
+.commentUserImgBox{
+   width: 0.4rem;
+   height: 0.4rem;
+   border-radius: 50%;
+   overflow: hidden;
+}
+.commentUserImg{
+    width: 0.4rem;
+}
+.commentUserBox{
+    width: 2.2rem;
+    font-size: 0.15rem;
+    margin:0 0.05rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.05rem 0;
+}
+.commentUserName{
+    padding-bottom: 0.05rem;
+}
+.commentTime{
+    display: flex;
+    flex-direction: row;
+    font-size: 0.1rem;
+    align-items: flex-start;
+    color: #999;
+}
