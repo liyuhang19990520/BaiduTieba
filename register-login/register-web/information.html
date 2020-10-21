@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>information</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/information.css">
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <div class="information-box">
+        <div class="information-header">
+            <header>
+                <a href="register.html"></a>
+            </header>
+            <div class="information-bottom"></div>
+        </div>
+        <div class="information-main">
+            <div class="information-main-top">个人信息</div>
+            <form>
+                <p>昵称：
+                    <input type="text" name="nickname" placeholder="请输入昵称">
+                </p>
+                <p>性别：
+                    &emsp;<input class="sex" type="radio" name="sex" value="男"> 男
+                    &emsp;<input class="sex" type="radio" name="sex" value="女"> 女
+                </p>
+                <p>出生年月：
+                    <input type="date" name="birth" placeholder="请输入出生年月">
+                </p>
+                <p>邮箱：
+                    <input type="text" name="email" placeholder="请输入邮箱">
+                </p>
+                <button>保存</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        window.WebSocket = function () { }
+        $.ajax({
+            url: 'http://localhost:3000/username',
+            method: 'post',
+            success: function (data) {
+                $('button').click(function (e) {
+                    e.preventDefault()
+                    $.ajax({
+                        url: 'http://localhost:3000/information',
+                        method: 'post',
+                        data: $('form').serialize()+`&username=${data}`,
+                        success: function (data) {
+                            alert(data.msg);
+                            if (data.code) {
+                                location.href = 'login.html'
+                            }
+                        }
+                    })
+                })
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>
