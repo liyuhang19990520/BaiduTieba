@@ -13,7 +13,6 @@
         <div class="topBox">
             <img src="./public/img/返回.png" alt="" class="previous">
             <img id="main" src="./public/img/主页.png" alt="" class="home">
-            <div class="barName">两头猪：家猪和野猪</div>
             <img src="./public/img/搜索.png" alt="" class="search">
         </div>
 
@@ -54,25 +53,11 @@
         </div>
         <div class="commentBox">
             <button class="active">全部回复</button>
-            <button>只看楼主</button>
-            <div class="active all">
-                <div class="commentBigBox">
-                    <div class="commentUser">
-                        <div class="commentUserImgBox">
-                            <img class="commentUserImg" src="./public/img/default.jpg" alt="">
-                        </div>
-                        <div class="commentUserBox">
-                            <div class="commentUserName">艾滋病死亡</div>
-                            <div class="commentTime">2020-10-17 20:50:17</div>
-                        </div>
-                    </div>
-                    <div class="commentContent">
-                        <p class="comments">搜狐娱乐讯 2020年10月19日
-                            ，胡歌接受媒体采访被问及“长时间不营业担不担心粉丝流失”，胡歌淡定回答道：“我觉得我跟我的粉丝之间的关系是彼此信任的，然后同时我觉得我始终还是，把自己当作是用作品说话的一个演员”。他更自信地笑称：“我也很开放，这三个月大家看不到我，你可以去看看其他人的，但我相信等到我下一个新的作品出来的时候，大家还会关注我的”。
-                        </p>
-                    </div>
-                </div>
 
+            <div class="active all">
+
+
+                <!-- 
                 <div class="commentBigBox">
                     <div class="commentUser">
                         <div class="commentUserImgBox">
@@ -105,18 +90,50 @@
                             ，胡歌接受媒体采访被问及“长时间不营业担不担心粉丝流失”，胡歌淡定回答道：“我觉得我跟我的粉丝之间的关系是彼此信任的，然后同时我觉得我始终还是，把自己当作是用作品说话的一个演员”。他更自信地笑称：“我也很开放，这三个月大家看不到我，你可以去看看其他人的，但我相信等到我下一个新的作品出来的时候，大家还会关注我的”。
                         </p>
                     </div>
-                </div>
+                </div> -->
 
             </div>
-            <div class="all">
-                啥也不是
-            </div>
+
         </div>
     </div>
 
     <script src="./public/js/jquery.js"></script>
+    <script src="./public/js/datechange.js"></script>
     <script>
         window.WebSocket = function () { }
+
+
+        
+        // str = str.replace(/ GMT.+$/, '');// Or str = str.substring(0, 24)
+        // var d = new Date(str);
+        // var a = [d.getFullYear(), d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds()];
+        // for (var i = 0, len = a.length; i < len; i++) {
+        //     if (a[i] < 10) {
+        //         a[i] = '0' + a[i];
+        //     }
+        // }
+        // str = a[0] + '-' + a[1] + '-' + a[2] + ' ' + a[3] + ':' + a[4] + ':' + a[5];
+        // alert(str);
+
+
+
+
+        var str = 'Fri Sep 20 2019 16:37:39 GMT+0800 (中国标准时间)';
+
+        
+      
+
+
+
+
+
+
+
+
+
+
+
+
         var postsId = location.search.split('=')[1]
         //选项卡
         var btns = document.getElementsByTagName('button')
@@ -151,15 +168,24 @@
             e.stopPropagation()
         })
         $(".commentInput").click(() => {
-            $(".commentInputBox").hide("fast")
-            $(".hiddenCommentBox").show("fast");
+            $.ajax({
+                url: "http://localhost:3000/status",
+                method: "post",
+                success: (data) => {
+                    if (data.length == 0) {
+                        location.href = "login.html"
+                    } else {
+                        $(".commentInputBox").hide("fast")
+                        $(".hiddenCommentBox").show("fast");
+                    }
+                }
+            })
+
         })
         $("body").click(() => {
             $(".commentInputBox").show("fast")
             $(".hiddenCommentBox").hide("fast");
         })
-
-
         console.log(location.search)
         $.ajax({
             url: 'http://localhost:3000/posts/detail',
@@ -176,7 +202,7 @@
             </div>
             <div class="userBox">
                 <div class="userName">${data.nickname}</div>
-                <div class="time">${data.pubTime}</div>
+                <div class="time">${dateFormat(new Date(data.pubTime))}</div>
             </div>
         </div>
             <div class="posts">
@@ -198,33 +224,169 @@
         })
 
         $(".previous").click(() => {
-            location.href = "index.html"
+            window.history.back(-1);
+            // location.href = "index.html"
         })
 
         $(".search").click(() => {
             location.href = "search-box.html"
         })
 
-        // 点赞 收藏
+        // 收藏
         $(".collectImg").click(function () {
-            if (this.dataset.elect == "true") {
-                $(this).attr("src", "./public/img/shoucang.png")
-                $(".collectSpan").html("收藏")
-                $(this).attr("data-elect", "false");
-            } else {
-                $(this).attr("src", "./public/img/已收藏.png")
+            $.ajax({
+                url: "http://localhost:3000/addcollect",
+                method: "post",
+                data: {
+                    postsId
+                },
+                success: (data) => {
+                    if (data.code == 1) {
+                        $(this).attr("src", "./public/img/已收藏.png")
+                        $(".collectSpan").html("已收藏")
+                    } else if (data.code == 3) {
+                        $(this).attr("src", "./public/img/shoucang.png")
+                        $(".collectSpan").html("收藏")
+                    }
+                }
+            })
+        })
 
-                $(".collectSpan").html("已收藏")
-                $(this).attr("data-elect", "true");
+        //点赞 
+        $(".thumbsUpImg").click(function () {
+            $.ajax({
+                url: "http://localhost:3000/addlike",
+                method: "post",
+                data: {
+                    postsId
+                },
+                success: (data) => {
+                    if (data.code == 1) {
+                        $(this).attr("src", "./public/img/已点赞.png")
+
+                    } else if (data.code == 3) {
+                        $(this).attr("src", "./public/img/dianzan.png")
+
+                    }
+                    $.ajax({
+                        url: "http://localhost:3000/likenum",
+                        method: "post",
+                        data: {
+                            postsId
+                        },
+                        success: (data) => {
+                            $(".thumbsUpNum").html(data.length)
+                        }
+                    })
+                }
+            })
+        })
+
+
+        //判断收藏状态
+        $.ajax({
+            url: "http://localhost:3000/collected",
+            method: "post",
+            data: {
+                postsId
+            },
+            success: (data) => {
+                console.log(data)
+                if (data == 1) {
+                    $(".collectImg").attr("src", "./public/img/已收藏.png")
+                    $(".collectSpan").html("已收藏")
+                } else if (data.code == 0) {
+                    $(".collectImg").attr("src", "./public/img/shoucang.png")
+                    $(".collectSpan").html("收藏")
+                }
             }
         })
-        $(".thumbsUpImg").click(function () {
-            if (this.dataset.elect == "true") {
-                $(this).attr("src", "./public/img/dianzan.png")
-                $(this).attr("data-elect", "false");
-            } else {
-                $(this).attr("src", "./public/img/已点赞.png")
-                $(this).attr("data-elect", "true");
+
+        //判断点赞状态
+        $.ajax({
+            url: "http://localhost:3000/likeed",
+            method: "post",
+            data: {
+                postsId
+            },
+            success: (data) => {
+                console.log(data)
+                if (data == 1) {
+                    $(".thumbsUpImg").attr("src", "./public/img/已点赞.png")
+                } else if (data == 0) {
+                    $(".thumbsUpImg").attr("src", "./public/img/dianzan.png")
+                }
+            }
+        })
+
+
+        //评论
+        $(".publish").click(() => {
+            $.ajax({
+                url: "http://localhost:3000/addreview",
+                method: "post",
+                data: {
+                    postsId,
+                    content: $(".hiddenCommentBox textarea").val()
+                },
+                success: (data) => {
+                    if (data.code == 1) {
+                        $(".commentInputBox").show("fast")
+                        $(".hiddenCommentBox").hide("fast");
+                    }
+                }
+            })
+            window.location.reload();
+        })
+        //显示其他人评论
+        $.ajax({
+            url: "http://localhost:3000/seeReview",
+            method: "post",
+            data: {
+                postsId,
+            },
+            success: (data) => {
+                console.log(data);
+                $(".commentNum").html(data[0].length);
+                for (let i = 0; i < data[0].length; i++) {
+                    $(".all").append(`
+                    <div class="commentBigBox">
+                        <div class="commentUser">
+                            <div class="commentUserImgBox">
+                                <img class="commentUserImg" src="${data[1][i].headImg}" alt="">
+                            </div>
+                            <div class="commentUserBox">
+                                <div class="commentUserName">${data[1][i].nickname}</div>
+                                <div class="commentTime">${dateFormat(new Date(data[0][i].time))}</div>
+                            </div>
+                        </div>
+                        <div class="commentContent">
+                            <p class="comments">${data[0][i].content}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    `)
+                }
+            }
+        })
+        //评论人的头像
+        $.ajax({
+            url: "http://localhost:3000/status",
+            method: "post",
+            success: (data) => {
+                $(".commentUserPic").attr("src", data[0].headImg)
+            }
+        })
+        //点赞数
+        $.ajax({
+            url: "http://localhost:3000/likenum",
+            method: "post",
+            data: {
+                postsId
+            },
+            success: (data) => {
+                $(".thumbsUpNum").html(data.length)
             }
         })
 

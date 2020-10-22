@@ -12,14 +12,6 @@ app.use(bodyParser.json())
 //cookie
 app.use(cookieParser());
 
-app.use(bodyParser.urlencoded({ "limit": "100mb" })); //根据需求更改limit大小
-app.use(bodyParser.json({ "limit": "100mb" }))
-app.use(bodyParser.json({limit: "50mb"}));
-app.use(bodyParser.json({limit : "2100000kb"}));  
-app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
-//据需求更改limit大小
-
-
 app.all('*', function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -55,7 +47,26 @@ app.post('/login', require('./api/user/login'))
 app.post('/changepsd', require('./api/user/changepsd'))
 //登陆状态
 app.post("/status", require('./api/user/status'))
-
+// 添加评论
+app.post("/addreview",require('./api/review/addreview'))
+// 获取评论表的评论
+app.post("/seeReview",require('./api/review/seeReview'))
+// 我的评论
+app.post("/myReview",require('./api/review/myReview'))
+//我的帖子
+app.get("/myposts",require('./api/posts/myposts'))
+//收藏
+app.post("/addcollect",require('./api/collect/addcollect'))
+//收藏状态
+app.post("/collected",require('./api/collect/collected'))
+//点赞
+app.post("/addlike",require('./api/like/addlike'))
+//点赞状态
+app.post("/likeed",require('./api/like/likeed'))
+//点赞数
+app.post("/likenum",require('./api/like/likenum'))
+//模糊查询
+app.get("/search",require('./api/posts/search'))
 
 app.listen(3000, () => {
   console.log('服务启动')

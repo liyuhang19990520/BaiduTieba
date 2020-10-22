@@ -1,5 +1,6 @@
 const POSTS = require('../../model/POSTS')
 const USER = require('../../model/USER')
+const REVIEW = require("../../model/REVIEW")
 
 
 
@@ -38,7 +39,19 @@ function postDataAll(obj) {
         })
     })
 }
+function reviewDataAll(obj) {
+    return new Promise((resole, reject) => {
+        REVIEW.find(obj, (err, result) => {
+            if (!err) {
+                resole(result);
+            } else {
+                reject();
+            }
+        })
+    })
+}
 
 exports.postDataID = postDataID;
 exports.userDataAll = userDataAll;
 exports.postDataAll = postDataAll;
+exports.reviewDataAll = reviewDataAll;

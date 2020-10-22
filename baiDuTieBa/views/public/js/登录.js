@@ -4,9 +4,9 @@
 window.WebSocket = function () { }
 
 //修改密码界面
-$('.forget').click(() => {
-    location.href = 'changepsd.html'
-})
+// $('.forget').click(() => {
+//     location.href = 'changepsd.html'
+// })
 
 //跳转注册界面
 $('.register').click(() => {

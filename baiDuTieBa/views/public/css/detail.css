@@ -123,18 +123,20 @@ body {
     flex-direction: column;
     font-size: 0.1rem;
     align-items: center;
-    width: 0.3rem;
+    width: 0.5rem;
 }
 .comment{
     display: flex;
     flex-direction: column;
     font-size: 0.1rem;
+    width: 0.5rem;
     align-items: center;
 }
 .thumbsUp{
     display: flex;
     flex-direction: column;
     font-size: 0.1rem;
+    width: 0.5rem;
     align-items: center;
 }
 
@@ -162,7 +164,8 @@ button.active {
 }
 
 .all.active {
-    display: block;
+    display: flex;
+    flex-flow: column-reverse nowrap;
 }
 
 /* 评论用户 */
@@ -213,7 +216,7 @@ button.active {
     font-size: 0.14rem;
     padding-bottom: 0.1rem;
 }
-.commentBigBox:last-of-type .comments{
+.commentBigBox:first-of-type .comments{
     padding-bottom: 0.5rem;
 }
 /* 评论输入框 */

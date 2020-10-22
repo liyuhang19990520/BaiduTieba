@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,11 +18,12 @@
 
         body {
             /* background-color: #999; */
-            
+
             font-size: 16px;
         }
     </style>
 </head>
+
 <body>
     <header class="blue-kit">
         <img src="./public/img/百度贴吧加向左返回箭头.png" alt="">
@@ -33,18 +35,18 @@
     <div class="choice">
         <p class="fTitle">我最爱逛的吧</p>
         <div class="myFavourite">
-            
+
             <a href="">崩坏3rd</a>
             <a href="">王者荣耀</a>
             <a href="">记忆力</a>
             <a href="">抗压背锅吧</a>
             <a href="">久胜战神</a>
             <a href="">一念神魔</a>
-            
+
         </div>
         <p class="hTitle">热门搜索HOT</p>
         <div class="hotSearch">
-            
+
             <a href="">最美时光</a>
             <a href="">两个爸爸</a>
             <a href="">欧美电影</a>
@@ -54,14 +56,24 @@
         </div>
     </div>
     <div class="tbSearchBottom">
-        
+
     </div>
 
     <script src="./public/js/jquery.js"></script>
     <script>
-        $(".blue-kit img").click(()=>{
+        window.WebSocket = function () { }
+        $(".blue-kit img").click(() => {
             location.href = "index.html"
+        })
+
+        $(".searchBtn").click(() => {
+            if ($('.search input').val().trim() == "") {
+                location.href = `index.html`
+            } else {
+                location.href = `index.html?search=${$('.search input').val()}`
+            }
         })
     </script>
 </body>
+
 </html>

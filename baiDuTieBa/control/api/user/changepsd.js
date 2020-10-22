@@ -1,3 +1,4 @@
+const { json } = require('body-parser')
 const USER = require('../../model/USER')
 function changepsd(req, res) {
     USER.find({ username: req.body.username }).then((result) => {
@@ -7,20 +8,26 @@ function changepsd(req, res) {
             }, {
                 password: req.body.password
             }, (err) => {
-                if (!err) {
+                if(req.body.password == req.body.passwordone){
+                    if (!err) {
+                        res.json({
+                            code: 1,
+                            msg: '修改成功'
+                        })
+                    }else{
+                        res.json({
+                            code: 1,
+                            msg: '网络开小差了...'
+                        })
+                    }
+                }else{
                     res.json({
-                        code: 1,
-                        msg: '修改成功'
+                        code: 0,
+                        msg: '密码不一致'
                     })
                 }
             })
-        } else if (result.length == 0) {
-            res.json({
-                code: 0,
-                msg: '你能先注册了再来吗？'
-            })
-
-        }
+        } 
     })
 }
 

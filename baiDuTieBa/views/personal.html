@@ -43,19 +43,19 @@
     <nav>
       <ul class="clearfix">
         <li>
-          <div>91</div>
+          <div class="tienum">0</div>
           <div>帖子</div>
         </li>
         <li>
-          <div>3</div>
-          <div>帖吧</div>
+          <div class="myreviews">0</div>
+          <div>我的评论</div>
         </li>
         <li>
-          <div>4</div>
+          <div>0</div>
           <div>关注</div>
         </li>
         <li>
-          <div>21</div>
+          <div>0</div>
           <div>粉丝</div>
         </li>
       </ul>
@@ -63,13 +63,15 @@
     <div class="content">
       <ul>
         <li>
-          <ul>
-            <li>
+          <ul class="tieBox">
+            <!-- <li>
               <div class="reply">我一直想把合金弹头开发出来。</div>
               <div class="tiezi">
-                <div class="title">分享自己用gamemaker制作合金弹头成熟源码（飞机boss）</div>
+                <div class="title">
+                  分享自己顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶用gamemaker制作合金弹头成顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶熟源码（飞机boss）
+                </div>
                 <img src="https://imgsa.baidu.com/forum/abpic/item/df6acb1349540923eccc44499f58d109b2de49be.jpg" alt="">
-                <div class="con">这个源码里面已经有摩登小兵和一个飞机boss。两个程序设计思路都比较成熟。分享一下给对gm做合金...</div>
+               
               </div>
             </li>
             <li>
@@ -87,7 +89,7 @@
                 <img src="https://imgsa.baidu.com/forum/abpic/item/df6acb1349540923eccc44499f58d109b2de49be.jpg" alt="">
                 <div class="con">这个源码里面已经有摩登小兵和一个飞机boss。两个程序设计思路都比较成熟。分享一下给对gm做合金...</div>
               </div>
-            </li>
+            </li> -->
           </ul>
         </li>
         <li>
@@ -180,11 +182,57 @@
   <script src="./public/js/personal.js"></script>
   <script src="./public/js/jquery.js"></script>
   <script>
-      window.WebSocket = function(){};
-      $(".edit").click(()=>{
-        location.href="editData.html"
-      })
+    window.WebSocket = function () { };
+    $(".edit").click(() => {
+      location.href = "editData.html"
+    })
+    //我的评论
+    $.ajax({
+      url: 'http://localhost:3000/myReview',
+      method: "post",
+      success: (data) => {
+        console.log(data)
+        $(".myreviews").html(data)
+      }
+    })
 
+    //自身头像和信息
+    $.ajax({
+      url: "http://localhost:3000/status",
+      method: "post",
+      success: (data) => {
+        $(".username").html(data[0].nickname)
+        $(".top img").attr("src",data[0].headImg)
+        console.log(data)
+      }
+    })
+    //我的帖子
+    $.ajax({
+      url: 'http://localhost:3000/myposts',
+      method: "get",
+      success: (data) => {
+        $(".tienum").html(data.length)
+        for (let i = 0; i < data.length; i++) {
+          $(".tieBox").append(`
+            <li>
+              <div class="reply">${data[i].headline}</div>
+              <div class="tiezi">
+                <div class="title">
+                  ${data[i].content}
+                </div>
+                <img src="${data[i].image[0]}" alt="">
+               
+              </div>
+            </li>
+          `)
+          if (!data[i].image[0]) {
+            $($(".tiezi")[i]).children("img").remove();
+          }
+        }
+        
+
+      }
+    })
   </script>
 </body>
 

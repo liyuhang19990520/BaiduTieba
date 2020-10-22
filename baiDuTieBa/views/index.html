@@ -94,11 +94,11 @@
                         <p>粉丝</p>
                     </div>
                     <div>
-                        <p>0</p>
-                        <p>关注的吧</p>
+                        <p class="myreviews">0</p>
+                        <p>我的评论</p>
                     </div>
                     <div>
-                        <p>0</p>
+                        <p class="myposts">0</p>
                         <p>帖子</p>
                     </div>
                 </div>
@@ -142,12 +142,13 @@
                     <p>退出登录</p>
                 </div>
                 <div class="downloadBox">
-                    <div class="download" >
+                    <div class="download">
                         <img src="https://tb2.bdstatic.com/tb/mobile/tbwisecommon/img/components/tieba_h5/tb-footer/images/footer_icon.png" alt="">
                         <p>年轻人的潮流文化社区</p>
                         <button>立即下载</button>
                     </div>
-                    <img src="http://tb2.bdstatic.com/tb/mobile/tbwisecommon/img/components/tieba_h5/tb-footer/images/bg_foot.png" alt="" class="backImg">
+                    <img src="http://tb2.bdstatic.com/tb/mobile/tbwisecommon/img/components/tieba_h5/tb-footer/images/bg_foot.png"
+                        alt="" class="backImg">
                 </div>
             </div>
         </div>
@@ -156,9 +157,10 @@
 
 
     <script src="./public/js/jquery.js"></script>
+    <script src="./public/js/datechange.js"></script>
     <script>
-
         window.WebSocket = function () { }
+        console.log();
 
         //选项卡
         for (let i = 0; i < $(".listTitle div").length; i++) {
@@ -172,10 +174,6 @@
             })
         }
 
-        //修改资料跳转
-
-
-
         //搜索跳转
         $(".search").click(() => {
             location.href = "search-box.html"
@@ -184,6 +182,7 @@
         $.ajax({
             url: 'http://localhost:3000/posts/list',
             type: 'get',
+            data: location.search.substr(1),
             success: function (data) {
                 console.log(data)
 
@@ -199,7 +198,7 @@
                                 <div class="time">
                                     <div>王思聪吧</div>
                                     <div>|</div>
-                                    <div>${data[i].pubTime}</div>
+                                    <div>${dateFormat(new Date(data[i].pubTime))}</div>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +208,7 @@
                                 
                             </div>
                             <div class="review">
-                                <img src="./public/img/消息.png" alt=""><span>11111</span>
+                                <img src="./public/img/消息.png" alt=""><span>${data[i].num}</span>
                             </div>
                     </div>`)
 
@@ -229,6 +228,13 @@
         })
 
         //资料详情
+        //修改资料跳转
+        //修改密码跳转
+        //搜索跳转
+        $(".safe").click(() => {
+            location.href = "security.html"
+        })
+        //发帖
         $.ajax({
             url: "http://localhost:3000/status",
             method: "post",
@@ -270,28 +276,39 @@
                 // console.log(document.cookie)
             }
         })
-        //发帖
-        // $(".release").click(() => {
-        //     location.href = "postApoat.html"
-        // })
 
         //退出登录
-        $(".logout").click(()=>{
+        $(".logout").click(() => {
             $.ajax({
                 url: "http://localhost:3000/status",
                 method: "post",
                 data: {
                     code: 1
                 },
-                success: (data)=>{
-
+                success: (data) => {
+                    ;
                 }
             })
+            window.location.reload()
         })
 
+        //我的评论
+        $.ajax({
+            url: 'http://localhost:3000/myReview',
+            method: "post",
+            success: (data) => {
+                $(".myreviews").html(data)
+            }
+        })
 
-
-
+        //我的帖子
+        $.ajax({
+            url: 'http://localhost:3000/myposts',
+            method: "get",
+            success: (data) => {
+                $(".myposts").html(data.length)
+            }
+        })
     </script>
 </body>
 

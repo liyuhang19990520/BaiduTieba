@@ -21,15 +21,103 @@
         <div class="changepsd-main">
             <div class="changepsd-main-top">修改密码</div>
             <form>
-                <input class="username" type="text" name="username" placeholder="请输入要找回的手机号" maxlength="11">
-                <input class="password" type="password" name="password" placeholder="请输入新的密码">
-                <!-- <input class="password" type="password" name="password" placeholder="请输入新的密码"> -->
+                <input class="oldPassword" type="password" name="oldPassword" placeholder="请输入原密码" maxlength="18">
+                <input class="newPassword" type="password" name="newPassword" placeholder="请输入新的密码" maxlength="18">
+                <input class="newPasswordTwice" type="password" name="newPasswordTwice" placeholder="请再次输入新的密码"
+                    maxlength="18">
                 <p class="tip"></p>
                 <button>修改</button>
             </form>
         </div>
-    <script src="./public/js/jquery.js"></script>
-    <script src="./public/js/改密码.js"></script>
+        <script src="./public/js/jquery.js"></script>
+        <script src="./public/js/改密码.js"></script>
+        <script>
+
+
+            $(".newPassword").on("input", function () {
+                if (pwd.test($(".newPassword").val()) == false) {
+                    $('button').css({
+                        opacity: 0.3
+                    });
+                    $('.tip').html('亲，密码不得小于六位')
+                } else {
+                    $('.tip').html('')
+                    if (pwd.test($(".oldPassword").val()) && pwd.test($(".newPassword").val()) && pwd.test($(".newPasswordTwice").val())) {
+                        $('button').css({
+                            opacity: 1
+                        });
+                    }
+                    if ($(".newPassword").val() == $(".oldPassword").val()) {
+                        $('.tip').html('不得与原密码相同')
+                        $('button').css({
+                            opacity: 0.3
+                        });
+                    }
+                }
+            })
+            $(".newPasswordTwice").on("input", function () {
+                if (pwd.test($(".newPasswordTwice").val()) == false) {
+                    $('button').css({
+                        opacity: 0.3
+                    });
+                    $('.tip').html('亲，密码不得小于六位')
+                } else {
+                    $('.tip').html('')
+                    if (pwd.test($(".oldPassword").val()) && pwd.test($(".newPassword").val()) && pwd.test($(".newPasswordTwice").val())) {
+                        if ($(".newPassword").val() == $(".oldPassword").val()) {
+                            $('button').css({
+                                opacity: 0.3
+                            });
+                            $('.tip').html('不得与原密码相同')
+                        } else {
+                            $('button').css({
+                                opacity: 1
+                            });
+                        }
+                    }
+                    if ($(".newPasswordTwice").val() != $(".newPassword").val()) {
+                        $('.tip').html('两次密码不一致')
+                        $('button').css({
+                            opacity: 0.3
+                        });
+                    }
+                }
+            })
+
+
+
+            $.ajax({
+                url: "http://localhost:3000/status",
+                method: 'post',
+                success: (data) => {
+                    console.log(data)
+                    $(".oldPassword").on("input", function () {
+                        console.log($(".oldPassword").val())
+                        if (pwd.test($(".oldPassword").val()) == false) {
+                            $('button').css({
+                                opacity: 0.3
+                            });
+                            $('.tip').html('亲，密码不得小于六位')
+                        } else {
+                            $('.tip').html('')
+                            if (pwd.test($(".oldPassword").val()) && pwd.test($(".newPassword").val()) && pwd.test($(".newPasswordTwice").val())) {
+                                $('button').css({
+                                    opacity: 1
+                                });
+                            }
+                            if ($(".oldPassword").val() != data[0].password) {
+                                $('button').css({
+                                    opacity: 0.3
+                                });
+                                $('.tip').html('原密码错误')
+                            }
+                        }
+                    })
+                }
+            })
+
+        </script>
+
 </body>
 
 </html>
