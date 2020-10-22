@@ -1,1 +1,0 @@
-{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"tieba.users"}],"uuid":"bdd3e346dd6d4953b53dcfd385122466"}
