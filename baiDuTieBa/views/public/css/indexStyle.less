@@ -1,0 +1,235 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 26.6667vw;
+    background-color: #F5F5F5;
+}
+body{
+    font-size: 16/@rem;
+    height: 100%;
+}
+@rem: 100rem;
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8/@rem;
+    border-bottom: 0.001rem solid rgba(0, 0, 0, .1);
+    background-color: #fff;
+    .release{
+        background: rgb(43, 226, 226);
+        border: none;
+        outline: none;
+        width: 0.6rem;
+        height: 0.3rem;
+        color: #fff;
+        border-radius: 0.2rem;
+        align-self: center;
+        font-size: 0.14rem;
+    }
+    div{
+        width: 44/@rem;
+        height: 44/@rem;
+        text-align: center;
+        img{
+           width: 24/@rem;
+           height: 24/@rem;
+           margin-top: 10/@rem;
+        }
+        p{
+            font-size: 14/@rem;
+        }
+        
+    }
+    
+}
+.listTitle{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40/@rem;
+    div{
+        width: 32/@rem;
+        height: 40/@rem;
+        box-sizing: border-box;
+        
+    }
+    span{
+        line-height: 40/@rem;
+    }
+}
+.contentBox{
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 582/@rem;
+    position: relative;
+}
+.content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    display: flex;
+    transition: left .3s;
+
+    > div{
+        width: 50%;
+    }
+}
+.login{
+    padding: 17/@rem;
+    height: 70/@rem;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #fff;
+    border-bottom: 0.01rem solid rgba(0, 0, 0, .1);
+    > div{
+        &:first-of-type{
+            width: 70/@rem;
+            height: 70/@rem;
+            border-radius: 50%;
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+        }
+        &:nth-of-type(2){
+            margin-left: 20/@rem;
+            max-width: 240/@rem;
+            display: flex;
+            flex-flow: nowrap column;
+            justify-content: space-evenly;
+            p{
+                &:first-of-type{
+                    font-size: 20/@rem;
+                    font-weight: 700;
+                    max-width: 230/@rem;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                &:nth-of-type(2){
+                    font-size: 14/@rem;
+                    color: #666;
+                }
+            }
+        }
+    }
+}
+.titleStyle{
+    border-bottom: #333333 3/@rem solid;
+}
+.home-tab{
+    height: 76/@rem;
+    background-color: #fff;
+    display: flex;
+    margin-bottom: 10/@rem;
+    div{
+        flex: 1;
+        height: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        p{
+            text-align: center;
+            &:first-of-type{
+                font-size: 20/@rem;
+                font-weight: 700;
+            }
+            &:last-of-type{
+                font-size: 12/@rem;
+            }
+        }
+    }
+}
+.user-select{
+    background-color: #fff;
+    div{
+        height: 52/@rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10/@rem;
+        div{
+            img{
+                &:first-of-type{
+                    width: 24/@rem;
+                    height: 24/@rem;
+                    margin-top: 0;
+                }
+            }
+            p{
+                margin-left: 10/@rem;
+            }
+        }
+        img{
+            &:last-of-type{
+                width: 12/@rem;
+                height: 12/@rem;
+                margin-top: 5/@rem;
+            }
+ 
+        }
+    }
+}
+.logout{
+    margin-top: 10/@rem;
+    height: 52/@rem;
+    p{
+        text-align: center;
+        line-height: 52/@rem;
+        background-color: #fff;
+    }
+}
+
+
+.downloadBox{
+    position: relative;
+}
+.download{
+    position: absolute;
+    top: 0.25rem;
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     align-items: center;
+     height: 1.7rem;
+     justify-content: space-around;
+}
+.download img{
+    width: 0.6rem;
+}
+.download p{
+    font-size: 0.14rem;
+}
+.download button{
+    width: 1.5rem;
+    font-size: 0.16rem;
+    background: #3385FF;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 0.07rem;
+}
+.backImg{
+    width: 100%;
+    margin-top: 0.05rem;
+}
+
+// 立即登录按钮
+.nowLogin{
+    position: absolute;
+    right: 0.2rem;
+    width: 0.8rem;
+    padding: 0.07rem;
+    border: none;
+    outline: none;
+    font-size: 0.14rem;
+    color: #fff;
+    background: rgb(51,133,255);
+    border-radius: 0.02rem;
+}

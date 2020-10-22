@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布帖子</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 26.6667vw;
+        }
+
+        body {
+            /* background-color: #999; */
+
+            font-size: 0.16rem;
+        }
+    </style>
+    <link rel="stylesheet" href="./public/css/postApost.css">
+</head>
+
+<body>
+    <header>
+        <div class="goBack">
+            <img src="./public/img/错误.png" alt="">
+        </div>
+        <div class="title">
+            <span>发布帖子</span>
+        </div>
+        <div class="post">
+            <span>发布</span>
+        </div>
+    </header>
+    <div class="postTitle">
+        <span>题目</span>
+        <input type="text" placeholder="选择合适的题目会获得更多的赞哦~">
+    </div>
+    <div class="contain">
+        <div class="containerWord">
+            <textarea type="text" cols="" rows="" placeholder="来吧，尽情发挥吧..."></textarea>
+        </div>
+        <div class="updatePhoto">
+            <img src="./public/img/上传图片 (2).png" alt="">
+            <input type="file" multiple="multiple">
+        </div>
+        <div class="picPack">
+            <!-- <div>
+                <img src="icon/默认头像.jpg" alt="">
+                <img src="icon/关  闭.png" alt="" class="close">
+            </div>
+            <div>
+                <img src="icon/默认头像.jpg" alt="">
+                <img src="icon/关  闭.png" alt="" class="close">
+            </div>
+            <div>
+                <img src="icon/默认头像.jpg" alt="">
+                <img src="icon/关  闭.png" alt="" class="close">
+            </div> -->
+
+
+
+
+        </div>
+    </div>
+
+    <footer>
+        <img src="./public/img/话筒.png" alt="">
+        <img src="./public/img/链接.png" alt="">
+        <img src="./public/img/表情.png" alt="">
+        <img src="./public/img/会员 1.png" alt="">
+        <img src="./public/img/添加.png" alt="">
+    </footer>
+
+    <script src="./public/js/jquery.js"></script>
+    <script>
+        window.WebSocket = function () { }
+        //上传图片
+        var updatePhoto = document.querySelector(".updatePhoto input");
+        updatePhoto.onchange = function () {
+            console.log(updatePhoto.files.length)
+            for (let i = 0; i < updatePhoto.files.length; i++) {
+                let fs = new FileReader;
+                fs.readAsDataURL(updatePhoto.files[i]);
+                fs.onload = function () {
+                    $(".picPack").append(`
+                    <div>
+                        <img src="${fs.result}" alt="">
+                        <img src="./public/img/关  闭.png" alt="" class="close">
+                    </div>
+                    `)
+                    $(".close").click(function () {
+                        $(this).parent().remove();
+                    })
+                }
+            }
+        }
+
+
+        $(".post").click(() => {
+            var arr = [];
+            for (let i = 0; i < $(".close").length; i++) {
+                arr.push($($(".close")[i]).prev().attr("src"));
+            }
+            $.ajax({
+                url: "http://localhost:3000/addpost",
+                method: "post",
+                data: {
+                    content: $(".containerWord textarea").val(),
+                    headline: $(".postTitle input").val(),
+                    image: arr
+                }
+                ,
+                success: (data) => {
+
+                }
+            })
+        })
+
+
+        //删除图片
+        $(".close").click(function () {
+            $(this).parent().remove();
+        })
+        //点击跳转主页
+        $(".goBack").click(() => {
+            location.href = "index.html"
+        })
+    </script>
+</body>
+
+</html>

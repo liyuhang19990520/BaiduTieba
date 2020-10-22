@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <link rel="stylesheet" href="./public/css/common.css">
+    <link rel="stylesheet" href="./public/css/register.css">
+    <script src="./public/js/jquery.js"></script>
+</head>
+
+<body>
+    <div class="register-box">
+        <div class="register-header">
+            <header>
+                <a href="login.html"></a>
+            </header>
+            <div class="register-bottom"></div>
+        </div>
+        <div class="register-main">
+            <div class="register-main-top">欢迎注册百度账号</div>
+            <form>
+                <input type="text" name="username" placeholder="请输入手机号" class="username">
+                <input type="password" name="password" placeholder="请输入密码" class="password">
+                <div id="tip"></div>
+                <button>立即注册</button>
+            </form>
+            <div class="register-main-bottom">
+                <p>注册百度帐号，即可登录所有百度产品</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.WebSocket = function () { }
+        var username = document.querySelector('.username')
+        var pw = document.querySelector('.password')
+        var tip = document.querySelector('#tip')
+        var tel = /^1\d{10}$/;
+        var pwd = /^.*(?=.{6,}).*$/;
+        var btn = document.querySelector('button')
+        tip.innerHTML = ''
+
+        username.oninput = function () {
+            if (tel.test(username.value) == false) {
+                btn.style.opacity = 0.3
+                tip.innerHTML = '!请输入正确的手机号';
+                return false
+            } else {
+                tip.innerHTML = ''
+                if (pwd.test(pw.value)) {
+                    btn.style.opacity = 1
+                } else {
+                    btn.style.opacity = 0.3
+                }
+                return true
+            }
+        }
+        pw.oninput = function () {
+            if (pwd.test(pw.value) == false) {
+                btn.style.opacity = 0.3
+                tip.innerHTML = '!密码至少6位';
+                return false
+            } else {
+                tip.innerHTML = ''
+                if (tel.test(username.value)) {
+                    btn.style.opacity = 1
+                } else {
+                    btn.style.opacity = 0.3
+                }
+                return true
+            }
+        }
+
+        $('button').click(function (e) {
+            e.preventDefault()
+            if (btn.style.opacity == 1) {
+                $.ajax({
+                    url: 'http://localhost:3000/register',
+                    method: 'post',
+                    data: $('form').serialize() + "&code=1",
+                    success: function (data) {
+                        if (data.code) {
+                            $.ajax({
+                                url: "http://localhost:3000/username",
+                                data: {
+                                    username: username.value
+                                },
+                                method: "post"
+                            })
+                            location.href = 'information.html'
+                        }else{
+                            tip.innerHTML = data.msg;
+                        }
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

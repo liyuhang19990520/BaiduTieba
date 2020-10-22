@@ -1,0 +1,122 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 26.6667vw;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+body {
+    /* background: rgb(56, 236, 191); */
+    font-size: 0.16rem;
+    overflow-x: hidden;
+    max-width: 100vw;
+    background: #F5F5F5;
+}
+.posts{
+    background: #fff;
+    margin-top: 0.1rem;
+}
+.headBox{
+    display: flex;
+    flex-direction: row;
+    padding:0.1rem 0.1rem;
+    align-items: center;
+}
+.headImgBox{
+   width: 0.4rem;
+   height: 0.4rem;
+   border-radius: 50%;
+   overflow: hidden;
+}
+.headImg{
+    width: 0.4rem;
+}
+.userBox{
+    width: 2.9rem;
+    font-size: 0.15rem;
+    margin:0 0.05rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.05rem 0;
+}
+.userName{
+    padding-bottom: 0.05rem;
+    padding-left: 0.07rem;
+}
+.time{
+    display: flex;
+    flex-direction: row;
+    font-size: 0.12rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: #999;
+}
+.time > div{
+    margin-left: 0.07rem;
+}
+.img-box {
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    height: 0.77rem;
+}
+
+.img-box div {
+    flex: 1;
+    height: 100%;
+    padding: 0.05rem 0.05rem 0.03rem 0.05rem;
+    min-width: 1.15rem;
+}
+.img-box div img{
+    width: 100%;
+    min-height: 100%;
+}
+
+h4 {
+    padding: 0.1rem 0.1rem;
+}
+
+.postContent {
+    padding: 0 0.1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: 0.15rem;
+    color: #666;
+}
+.box .posts:first-of-type{
+    margin-top: 0.001rem;
+    
+}
+.review{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 0.4rem;
+}
+.review img{
+    width: 0.20rem;
+    height: 0.20rem;
+}
+.review span{
+    font-size: 0.14rem;
+    margin-right: 0.1rem;
+    margin-left: 0.05rem;
+}

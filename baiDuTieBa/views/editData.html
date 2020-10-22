@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑资料</title>
+    
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 26.6667vw;
+        }
+
+        body {
+            /* background-color: #999; */
+            
+            font-size: 16px;
+        }
+    </style>
+    <link rel="stylesheet" href="./public/css/editData.css">
+</head>
+<body>
+    <header class="blue-kit">
+        <img src="./public/img/返回到我的资料.png" alt="">
+        
+    </header>
+    <div class="person">
+        <div class="headImg">
+            <img src="./public/img/默认头像.jpg" alt="">
+            <p>lyh123123</p>
+            
+        </div>
+        <div class="headDesc">
+            <div class="changeHI">更改头像<img src="./public/img/择律-付费咨询列表页分割箭头.png" alt=""></div>
+            <span class="changeTips">上传大图可能较缓慢</span>
+        </div>
+        
+    </div>
+    <div class="nickname">
+        <span>昵称</span>
+        <input type="input"" value="liyuhang123">
+    </div>
+    <div class="sexChoice">
+        <span>性别</span>
+        <label>
+            <input type="radio" checked name="sex" value="1">
+            男
+        </label>
+        <label>
+            <input type="radio"  name="sex" value="2">
+            女
+        </label>
+    </div>
+    <div class="birthDate">
+        <span>生日</span>
+        <input type="date">
+    </div>
+    <div class="telephone">
+        <span>电话</span>
+        <input type="tel">
+    </div>
+    <div class="emailUrl">
+        <span>邮箱</span>
+        <input type="email" placeholder="XXXX@xxx.com">
+    </div>
+    <div class="saveData">
+        <input type="button" value="保存修改">
+    </div>
+
+    <script src="./public/js/jquery.js"></script>
+    <script>
+        $(".blue-kit > img").click(()=>{
+            location.href = "personal.html"
+        })
+    </script>
+</body>
+</html>

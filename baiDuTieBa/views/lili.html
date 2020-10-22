@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="./public/js/jquery.js"></script>
+    <script>
+        $.ajax({
+            url: "http://localhost:3000/status",
+            method: "post",
+            success: (data)=>{
+                console.log(data)
+                // console.log(document.cookie)
+            }
+        })
+    </script>
+</body>
+</html>

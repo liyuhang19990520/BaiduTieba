@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./public/css/postlist.css">
+    <link rel="stylesheet" href="./public/css/indexStyle.css">
+</head>
+
+<body>
+    <!-- 导航搜索 -->
+    <nav>
+        <div class="search">
+            <img src="./public//img/搜索.png" alt="">
+        </div>
+        <p>百度贴吧</p>
+
+        <button class="release">发布</button>
+
+    </nav>
+    <!-- 选项卡标题 -->
+    <div class="listTitle">
+        <div class="titleStyle">
+            <span>推荐</span>
+        </div>
+        <div>
+            <span>我的</span>
+        </div>
+    </div>
+    <div class="contentBox">
+        <div class="content">
+            <div class="recommend">
+                <div class="box">
+                    <!-- <div class="posts">
+                        <div class="headBox">
+                            <div class="headImgBox">
+                                <img class="headImg" src="./img/default.jpg" alt="">
+                            </div>
+                            <div class="userBox">
+                                <div class="userName">艾滋病死亡</div>
+                                <div class="time">
+                                    <div>王思聪吧</div>
+                                    <div>|</div>
+                                    <div>2020-10-17 20:50:17</div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>艾滋病</h4>
+                        <p class="postContent">艾滋病</p>
+                        <div class="img-box">
+                            <div>
+                                <img src="https://dss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3186208452,3395197656&fm=202&mola=new&crop=v1"
+                                    alt="">
+                            </div>
+                            <div>
+                                <img src="https://dss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3186208452,3395197656&fm=202&mola=new&crop=v1"
+                                    alt="">
+                            </div>
+                            <div>
+                                <img src="https://dss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3186208452,3395197656&fm=202&mola=new&crop=v1"
+                                    alt="">
+                            </div>
+                            <div>
+                                <img src="https://dss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3186208452,3395197656&fm=202&mola=new&crop=v1"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="review">
+                            <img src="./public/img/消息.png" alt=""><span>11111</span>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="me">
+                <div class="login">
+                    <div>
+                        <img src="../../JS/image/29.png" alt="" class="personImg">
+                    </div>
+                    <div>
+                        <p class="nickname">name</p>
+                        <p class="describe"></p>
+                        <button class="nowLogin">立即登录</button>
+                    </div>
+                </div>
+                <div class="home-tab">
+                    <div>
+                        <p>0</p>
+                        <p>关注</p>
+                    </div>
+                    <div>
+                        <p>0</p>
+                        <p>粉丝</p>
+                    </div>
+                    <div>
+                        <p>0</p>
+                        <p>关注的吧</p>
+                    </div>
+                    <div>
+                        <p>0</p>
+                        <p>帖子</p>
+                    </div>
+                </div>
+                <div class="user-select">
+                    <div>
+                        <div>
+                            <img src="./public/img/星星.png" alt="">
+                            <p>我的收藏</p>
+                        </div>
+                        <img src="./public/img/右箭头.png" alt="">
+                    </div>
+                </div>
+                <div class="user-select">
+                    <div>
+                        <div>
+                            <img src="./public/img/胡豆.png" alt="">
+                            <p>会员中心</p>
+                        </div>
+                        <img src="./public/img/右箭头.png" alt="">
+                    </div>
+                </div>
+                <div class="user-select safe">
+                    <div>
+                        <div>
+                            <img src="./public/img/盾牌q.png" alt="">
+                            <p>账号安全</p>
+                        </div>
+                        <img src="./public/img/右箭头.png" alt="">
+                    </div>
+                </div>
+                <div class="user-select">
+                    <div>
+                        <div>
+                            <img src="./public/img/消息.png" alt="">
+                            <p>意见反馈</p>
+                        </div>
+                        <img src="./public/img/右箭头.png" alt="">
+                    </div>
+                </div>
+                <div class="logout">
+                    <p>退出登录</p>
+                </div>
+                <div class="downloadBox">
+                    <div class="download" >
+                        <img src="https://tb2.bdstatic.com/tb/mobile/tbwisecommon/img/components/tieba_h5/tb-footer/images/footer_icon.png" alt="">
+                        <p>年轻人的潮流文化社区</p>
+                        <button>立即下载</button>
+                    </div>
+                    <img src="http://tb2.bdstatic.com/tb/mobile/tbwisecommon/img/components/tieba_h5/tb-footer/images/bg_foot.png" alt="" class="backImg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="./public/js/jquery.js"></script>
+    <script>
+
+        window.WebSocket = function () { }
+
+        //选项卡
+        for (let i = 0; i < $(".listTitle div").length; i++) {
+            $($(".listTitle div")[i]).click(function () {
+                $(".content").css("left", `${-100 * $(this).index()}%`)
+                $(".content > div").css("height", "0");
+                $(".content > div").css("overflow", "hidden");
+                $(".listTitle").find(".titleStyle").removeClass("titleStyle");
+                $($(".content > div")[i]).css("height", "auto");
+                $(this).addClass("titleStyle");
+            })
+        }
+
+        //修改资料跳转
+
+
+
+        //搜索跳转
+        $(".search").click(() => {
+            location.href = "search-box.html"
+        })
+        //帖子列表
+        $.ajax({
+            url: 'http://localhost:3000/posts/list',
+            type: 'get',
+            success: function (data) {
+                console.log(data)
+
+                for (let i = 0; i < data.length; i++) {
+                    $('.box').append(`
+                    <div class="posts">
+                        <div class="headBox">
+                            <div class="headImgBox">
+                                <img class="headImg" src="${data[i].headImg}" alt="">
+                            </div>
+                            <div class="userBox">
+                                <div class="userName">${data[i].nickname}</div>
+                                <div class="time">
+                                    <div>王思聪吧</div>
+                                    <div>|</div>
+                                    <div>${data[i].pubTime}</div>
+                                </div>
+                            </div>
+                        </div>
+                            <h4>${data[i].headline}</h4>
+                            <p class="postContent">${data[i].content}</p>
+                            <div class="img-box">
+                                
+                            </div>
+                            <div class="review">
+                                <img src="./public/img/消息.png" alt=""><span>11111</span>
+                            </div>
+                    </div>`)
+
+                    data[i].image.forEach(element => {
+                        $($(".img-box")[i]).append(`
+                                <div>
+                                    <img src="${element}" alt="">
+                                </div>
+                                `)
+                    });
+
+                    $($('.posts')[i]).click(() => {
+                        location.href = `./detail.html?id=${data[i]._id}`
+                    })
+                }
+            }
+        })
+
+        //资料详情
+        $.ajax({
+            url: "http://localhost:3000/status",
+            method: "post",
+            success: (data) => {
+                console.log(data)
+                if (data.length != 0) {
+                    $(".personImg").attr("src", data[0].headImg)
+                    $(".nickname").html(data[0].nickname);
+                    $(".describe").html("查看个人主页和资料编辑")
+                    $(".home-tab").css("display", "flex");
+                    $(".safe").css("display", "block");
+                    $(".logout").css("display", "block");
+                    $(".downloadBox").css("display", "none");
+                    $(".nowLogin").css("display", "none");
+                    $(".login").click(() => {
+                        location.href = "personal.html"
+                    })
+                    $(".release").click(() => {
+                        location.href = "postApoat.html"
+                    })
+                } else {
+                    $(".personImg").attr("src", "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603278863709&di=aaff630f069221b773f574ca1c022cc6&imgtype=0&src=http%3A%2F%2Fimg.hao661.com%2Fzt.hao661.com%2Fuploads%2Fallimg%2Fc141010%2F141293413R4330-20D17.jpg")
+                    $(".nickname").html("未登录");
+                    $(".describe").html("登陆后发帖评论畅所欲言")
+                    $(".home-tab").css("display", "none");
+                    $(".safe").css("display", "none");
+                    $(".logout").css("display", "none");
+                    $(".downloadBox").css("display", "block");
+                    $(".nowLogin").css("display", "block");
+                    $(".login").click(() => {
+                        location.href = "login.html"
+                    })
+                    $(".release").click(() => {
+                        location.href = "login.html"
+                    })
+
+                }
+
+                // console.log(document.cookie)
+            }
+        })
+        //发帖
+        // $(".release").click(() => {
+        //     location.href = "postApoat.html"
+        // })
+
+        //退出登录
+        $(".logout").click(()=>{
+            $.ajax({
+                url: "http://localhost:3000/status",
+                method: "post",
+                data: {
+                    code: 1
+                },
+                success: (data)=>{
+
+                }
+            })
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

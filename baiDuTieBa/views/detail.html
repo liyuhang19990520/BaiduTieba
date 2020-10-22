@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./public/css/detail.css">
+</head>
+
+<body>
+    <div class="detailContent">
+        <div class="topBox">
+            <img src="./public/img/返回.png" alt="" class="previous">
+            <img id="main" src="./public/img/主页.png" alt="" class="home">
+            <div class="barName">两头猪：家猪和野猪</div>
+            <img src="./public/img/搜索.png" alt="" class="search">
+        </div>
+
+        <div class="box">
+
+        </div>
+        <div class="interactionBox">
+            <div class="collection">
+                <img src="./public/img/shoucang.png" alt="" class="collectImg" data-elect="false">
+                <span class="collectSpan">收藏</span>
+            </div>
+            <div class="comment">
+                <img src="./public/img/pinglun.png" alt="">
+                <span class="commentNum">122</span>
+            </div>
+            <div class="thumbsUp">
+                <img src="./public/img/dianzan.png" alt="" class="thumbsUpImg" data-elect="false">
+                <span class="thumbsUpNum">122</span>
+            </div>
+        </div>
+
+        <!-- 评论框 -->
+        <div class="commentInputBox">
+            <img src="./public/img/默认头像.jpg" alt="" class="commentUserPic">
+            <input type="text" placeholder="我来评论" class="commentInput">
+        </div>
+        <!-- 点击评论框显示 -->
+        <div class="hiddenCommentBox">
+            <textarea name="" id="" cols="35" rows="5" class="commentTextarea" placeholder="我来聊几句..."></textarea>
+            <input class="publish" value="发表"></input>
+            <footer>
+                <img src="./public/img/话筒.png" alt="">
+                <img src="./public/img/链接.png" alt="">
+                <img src="./public/img/表情.png" alt="">
+                <img src="./public/img/会员 1.png" alt="">
+                <img src="./public/img/添加.png" alt="">
+            </footer>
+        </div>
+        <div class="commentBox">
+            <button class="active">全部回复</button>
+            <button>只看楼主</button>
+            <div class="active all">
+                <div class="commentBigBox">
+                    <div class="commentUser">
+                        <div class="commentUserImgBox">
+                            <img class="commentUserImg" src="./public/img/default.jpg" alt="">
+                        </div>
+                        <div class="commentUserBox">
+                            <div class="commentUserName">艾滋病死亡</div>
+                            <div class="commentTime">2020-10-17 20:50:17</div>
+                        </div>
+                    </div>
+                    <div class="commentContent">
+                        <p class="comments">搜狐娱乐讯 2020年10月19日
+                            ，胡歌接受媒体采访被问及“长时间不营业担不担心粉丝流失”，胡歌淡定回答道：“我觉得我跟我的粉丝之间的关系是彼此信任的，然后同时我觉得我始终还是，把自己当作是用作品说话的一个演员”。他更自信地笑称：“我也很开放，这三个月大家看不到我，你可以去看看其他人的，但我相信等到我下一个新的作品出来的时候，大家还会关注我的”。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="commentBigBox">
+                    <div class="commentUser">
+                        <div class="commentUserImgBox">
+                            <img class="commentUserImg" src="./public/img/default.jpg" alt="">
+                        </div>
+                        <div class="commentUserBox">
+                            <div class="commentUserName">艾滋病死亡</div>
+                            <div class="commentTime">2020-10-17 20:50:17</div>
+                        </div>
+                    </div>
+                    <div class="commentContent">
+                        <p class="comments">
+                            有一同事（比较胖，但不是难看的那种）在一伴婚恋上认识了一男，在微信上聊了几天，之后约出去见面，回来后各种痛骂，问其原因，说，对方一见面就给她介绍各种健身会所，还说，女人一定要管理好自己的身材，要学会化妆等等，关键是对方也是属于大肚子，脸各种油，穿衣打扮很不讲究的主，还好意思说别人，最后还跟我说，吃饭的钱，AA，……！各种奇葩……
+                        </p>
+                    </div>
+                </div>
+
+                <div class="commentBigBox">
+                    <div class="commentUser">
+                        <div class="commentUserImgBox">
+                            <img class="commentUserImg" src="./public/img/default.jpg" alt="">
+                        </div>
+                        <div class="commentUserBox">
+                            <div class="commentUserName">艾滋病死亡</div>
+                            <div class="commentTime">2020-10-17 20:50:17</div>
+                        </div>
+                    </div>
+                    <div class="commentContent">
+                        <p class="comments">搜狐娱乐讯 2020年10月19日
+                            ，胡歌接受媒体采访被问及“长时间不营业担不担心粉丝流失”，胡歌淡定回答道：“我觉得我跟我的粉丝之间的关系是彼此信任的，然后同时我觉得我始终还是，把自己当作是用作品说话的一个演员”。他更自信地笑称：“我也很开放，这三个月大家看不到我，你可以去看看其他人的，但我相信等到我下一个新的作品出来的时候，大家还会关注我的”。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="all">
+                啥也不是
+            </div>
+        </div>
+    </div>
+
+    <script src="./public/js/jquery.js"></script>
+    <script>
+        window.WebSocket = function () { }
+        var postsId = location.search.split('=')[1]
+        //选项卡
+        var btns = document.getElementsByTagName('button')
+        var all = document.getElementsByClassName('all')
+
+        class select {
+            constructor(btns, all) {
+                this.index = 0;
+                this.btns = btns;
+                this.all = all;
+                for (let i = 0; i < this.btns.length; i++) {
+                    this.btns[i].onclick = () => {
+                        this.click(i)
+                    }
+                }
+            }
+            click(i) {
+                this.btns[this.index].classList.remove("active");
+                this.all[this.index].style.display = "none";
+                this.index = i;
+                this.btns[i].classList.add("active");
+                this.all[i].style.display = "block";
+            }
+        }
+        var s = new select(btns, all);
+
+        // 点击评论框
+        $(".hiddenCommentBox").click((e) => {
+            e.stopPropagation()
+        })
+        $(".commentInputBox").click((e) => {
+            e.stopPropagation()
+        })
+        $(".commentInput").click(() => {
+            $(".commentInputBox").hide("fast")
+            $(".hiddenCommentBox").show("fast");
+        })
+        $("body").click(() => {
+            $(".commentInputBox").show("fast")
+            $(".hiddenCommentBox").hide("fast");
+        })
+
+
+        console.log(location.search)
+        $.ajax({
+            url: 'http://localhost:3000/posts/detail',
+            type: 'get',
+            data: {
+                postsId
+            },
+            success: function (data) {
+                console.log(data)
+                $('.box').append(`
+                <div class="headBox">
+            <div class="headImgBox">
+                <img class="headImg" src="${data.headImg}" alt="">
+            </div>
+            <div class="userBox">
+                <div class="userName">${data.nickname}</div>
+                <div class="time">${data.pubTime}</div>
+            </div>
+        </div>
+            <div class="posts">
+                <p class="content">${data.content}</p>
+                <div class="img-box">
+            
+                    
+                </div>
+             </div>`)
+                data.image.forEach(element => {
+                    $(".img-box").append(`
+                    <div>
+                        <img src="${element}" alt="">
+                    </div>
+                 `)
+                });
+            }
+
+        })
+
+        $(".previous").click(() => {
+            location.href = "index.html"
+        })
+
+        $(".search").click(() => {
+            location.href = "search-box.html"
+        })
+
+        // 点赞 收藏
+        $(".collectImg").click(function () {
+            if (this.dataset.elect == "true") {
+                $(this).attr("src", "./public/img/shoucang.png")
+                $(".collectSpan").html("收藏")
+                $(this).attr("data-elect", "false");
+            } else {
+                $(this).attr("src", "./public/img/已收藏.png")
+
+                $(".collectSpan").html("已收藏")
+                $(this).attr("data-elect", "true");
+            }
+        })
+        $(".thumbsUpImg").click(function () {
+            if (this.dataset.elect == "true") {
+                $(this).attr("src", "./public/img/dianzan.png")
+                $(this).attr("data-elect", "false");
+            } else {
+                $(this).attr("src", "./public/img/已点赞.png")
+                $(this).attr("data-elect", "true");
+            }
+        })
+
+    </script>
+</body>
+
+</html>
