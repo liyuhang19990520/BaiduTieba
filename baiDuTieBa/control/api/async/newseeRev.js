@@ -16,7 +16,6 @@ async function main(req) {
     }
     let newArr = [revAllData,arr];
 
-    // console.log(obj);
     return newArr;
 }
 

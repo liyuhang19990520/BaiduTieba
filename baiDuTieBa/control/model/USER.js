@@ -6,17 +6,11 @@ const userSchema = new mongoose.Schema({
     sex: String,
     birth: String,
     email: String,
-    followee: {
-        type: String,
-        default: 0
-    },
+    followee: Array,
+    fans: Array,
     status: {
         type: String,
         default: false
-    },
-    fans: {
-        type: String,
-        default: 0
     },
     headImg:{
         type: String,

@@ -67,6 +67,20 @@ app.post("/likeed",require('./api/like/likeed'))
 app.post("/likenum",require('./api/like/likenum'))
 //模糊查询
 app.get("/search",require('./api/posts/search'))
+//我的收藏
+app.get("/mycollect",require('./api/collect/mycollect'))
+//我的关注
+app.post("/myatt",require('./api/user/myatt'))
+//我的粉丝
+app.post("/myfans",require('./api/user/myfans'))
+//删除关注和粉丝
+app.post("/userdel",require('./api/user/userdel'))
+//好友资料
+app.get("/firend",require("./api/user/firend"))
+//加关取关
+app.post("/addAtt",require("./api/user/addAtt"))
+//打开界面判断
+app.post("/newAddAtt",require("./api/user/newAddAtt"))
 
 app.listen(3000, () => {
   console.log('服务启动')

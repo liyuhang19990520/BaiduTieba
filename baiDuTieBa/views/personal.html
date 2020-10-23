@@ -48,14 +48,14 @@
         </li>
         <li>
           <div class="myreviews">0</div>
-          <div>我的评论</div>
+          <div>我的点赞</div>
         </li>
         <li>
-          <div>0</div>
+          <div class="attNum">0</div>
           <div>关注</div>
         </li>
         <li>
-          <div>0</div>
+          <div class="fansNum">0</div>
           <div>粉丝</div>
         </li>
       </ul>
@@ -92,87 +92,19 @@
             </li> -->
           </ul>
         </li>
-        <li>
-          贴吧
+        <li class="myloveBigBox">
+
+
         </li>
         <li>
           <ul class="guanzhu">
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.d9d3cf1f.sei_J_hCYfmRsS7WeshFHw"
-                alt="">
-              <p>urknp</p>
-            </li>
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.d9d3cf1f.sei_J_hCYfmRsS7WeshFHw"
-                alt="">
-              <p>urknp</p>
-            </li>
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.d9d3cf1f.sei_J_hCYfmRsS7WeshFHw"
-                alt="">
-              <p>urknp</p>
-            </li>
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.d9d3cf1f.sei_J_hCYfmRsS7WeshFHw"
-                alt="">
-              <p>urknp</p>
-            </li>
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.d9d3cf1f.sei_J_hCYfmRsS7WeshFHw"
-                alt="">
-              <p>urknp</p>
-            </li>
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.d9d3cf1f.sei_J_hCYfmRsS7WeshFHw"
-                alt="">
-              <p>urknp</p>
-            </li>
+
+
           </ul>
         </li>
         <li>
           <ul class="fensi">
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.b2e436b5.o1QZU-NRwV3Y-CBv8xHmCg?t=1571357444"
-                alt="">
-              <p>海岸上的蜗牛🌚</p>
-            </li>
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.b2e436b5.o1QZU-NRwV3Y-CBv8xHmCg?t=1571357444"
-                alt="">
-              <p>海岸上的蜗牛🌚</p>
-            </li>
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.b2e436b5.o1QZU-NRwV3Y-CBv8xHmCg?t=1571357444"
-                alt="">
-              <p>海岸上的蜗牛🌚</p>
-            </li>
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.b2e436b5.o1QZU-NRwV3Y-CBv8xHmCg?t=1571357444"
-                alt="">
-              <p>海岸上的蜗牛🌚</p>
-            </li>
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.b2e436b5.o1QZU-NRwV3Y-CBv8xHmCg?t=1571357444"
-                alt="">
-              <p>海岸上的蜗牛🌚</p>
-            </li>
-            <li>
-              <img
-                src="https://gss0.bdstatic.com/6LZ1dD3d1sgCo2Kml5_Y_D3/sys/portrait/item/tb.1.b2e436b5.o1QZU-NRwV3Y-CBv8xHmCg?t=1571357444"
-                alt="">
-              <p>海岸上的蜗牛🌚</p>
-            </li>
+
           </ul>
         </li>
       </ul>
@@ -181,20 +113,21 @@
 
   <script src="./public/js/personal.js"></script>
   <script src="./public/js/jquery.js"></script>
+  <script src="./public/js/datechange.js"></script>
   <script>
     window.WebSocket = function () { };
     $(".edit").click(() => {
       location.href = "editData.html"
     })
     //我的评论
-    $.ajax({
-      url: 'http://localhost:3000/myReview',
-      method: "post",
-      success: (data) => {
-        console.log(data)
-        $(".myreviews").html(data)
-      }
-    })
+    // $.ajax({
+    //   url: 'http://localhost:3000/myReview',
+    //   method: "post",
+    //   success: (data) => {
+    //     console.log(data)
+    //     $(".myreviews").html(data)
+    //   }
+    // })
 
     //自身头像和信息
     $.ajax({
@@ -202,7 +135,9 @@
       method: "post",
       success: (data) => {
         $(".username").html(data[0].nickname)
-        $(".top img").attr("src",data[0].headImg)
+        $(".top img").attr("src", data[0].headImg)
+        $(".attNum").html(data[0].followee.length)
+        $(".fansNum").html(data[0].fans.length)
         console.log(data)
       }
     })
@@ -211,6 +146,7 @@
       url: 'http://localhost:3000/myposts',
       method: "get",
       success: (data) => {
+        console.log(data)
         $(".tienum").html(data.length)
         for (let i = 0; i < data.length; i++) {
           $(".tieBox").append(`
@@ -220,19 +156,108 @@
                 <div class="title">
                   ${data[i].content}
                 </div>
-                <img src="${data[i].image[0]}" alt="">
+                
                
               </div>
             </li>
           `)
-          if (!data[i].image[0]) {
-            $($(".tiezi")[i]).children("img").remove();
+          if (data[i].image.length > 0) {
+            $($(".tiezi")[i]).append(`<img src="${data[i].image[0]}" alt="">`);
           }
         }
-        
+      }
+    })
+    //我的关注
+    $.ajax({
+      url: "http://localhost:3000/myatt",
+      method: "post",
+      success: (data) => {
+        console.log(data)
+        for (let i = 0; i < data.length; i++) {
+          $(".guanzhu").append(`
+           <li>
+              <img
+                src="${data[i].headImg}"
+                alt="">
+              <p>${data[i].nickname}</p>
+             
+            </li>
+          `)
+
+          // $($(".wrong")[i]).click(function () {
+          //   $(this).parent().remove();
+          //   let num = $(".attNum").html()
+          //   num--;
+          //   $(".attNum").html(num)
+          //   $.ajax({
+          //     url: "http://localhost:3000/userdel",
+          //     method: "post",
+          //     data: {
+          //       code: 1,
+          //       username: data[i].username
+          //     },
+          //     success: (data) => {
+          //       console.log(data)
+          //     }
+          //   })
+          // })
+        }
 
       }
     })
+    //我的粉丝
+    $.ajax({
+      url: "http://localhost:3000/myfans",
+      method: "post",
+      success: (data) => {
+        console.log(data)
+        for (let i = 0; i < data.length; i++) {
+          $(".fensi").append(`
+           <li>
+              <img
+                src="${data[i].headImg}"
+                alt="">
+              <p>${data[i].nickname}</p>
+            
+            </li>
+          `)
+        }
+
+      }
+    })
+    //我的点赞
+    $.ajax({
+      url: "http://localhost:3000/mycollect",
+      data: {
+        code: 2
+      },
+      method: "get",
+      success: (data) => {
+        console.log(data)
+        $(".myreviews").html(data.length)
+        for (let i = 0; i < data.length; i++) {
+          $(".myloveBigBox").append(`
+            <div class="myloveBox">
+              <div class="myloveTitle">${data[i].headline}</div>
+              <div class="myloveUser">
+                <div class="myloveUserName">${data[i].nickname}</div>
+                <div class="myloveTime">${dateFormat(new Date(data[i].pubTime))}</div>
+              </div>
+            </div>
+          `)
+
+          if (data[i].image.length > 0) {
+            $($(".myloveBox")[i]).append(`<img src="${data[i].image[0]}" alt="">`)
+          }
+
+          $($(".myloveBox")[i]).click(() => {
+            location.href = `./detail.html?id=${data[i].id}`
+          })
+
+        }
+      }
+    })
+
   </script>
 </body>
 

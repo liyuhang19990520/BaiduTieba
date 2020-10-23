@@ -26,14 +26,42 @@
                 <input class="newPasswordTwice" type="password" name="newPasswordTwice" placeholder="请再次输入新的密码"
                     maxlength="18">
                 <p class="tip"></p>
-                <button>修改</button>
+                <button class="changebtn">修改</button>
             </form>
         </div>
         <script src="./public/js/jquery.js"></script>
-        <script src="./public/js/改密码.js"></script>
         <script>
+            var pwd = /^.*(?=.{6,}).*$/;
+    
+            //解决页面刷新问题
+            window.WebSocket = function () { }
+
+            //跳转登录页面
+            $('svg').click(() => {
+                location.href = 'login.html'
+            })
 
 
+            //提交数据到后端
+            $('button').click(function (e) {
+                e.preventDefault()
+                if ( $(this).css("opacity")== 1) {
+                    $.ajax({
+                    url: "http://localhost:3000/changepsd",
+                    type: 'post',
+                    data: $('form').serialize(),
+                    success: function (data) {
+                        $('.tip').html(data.msg)
+                        $('.tip').css('color', 'blue')
+                        if (data.code) {
+                            location.href = 'index.html'
+                        }
+                    }
+                 })
+                }
+            })
+
+            //验证密码
             $(".newPassword").on("input", function () {
                 if (pwd.test($(".newPassword").val()) == false) {
                     $('button').css({
@@ -53,6 +81,8 @@
                             opacity: 0.3
                         });
                     }
+
+
                 }
             })
             $(".newPasswordTwice").on("input", function () {
@@ -85,14 +115,15 @@
             })
 
 
-
             $.ajax({
                 url: "http://localhost:3000/status",
-                method: 'post',
+                type: 'post',
+                data: {
+
+                },
                 success: (data) => {
                     console.log(data)
                     $(".oldPassword").on("input", function () {
-                        console.log($(".oldPassword").val())
                         if (pwd.test($(".oldPassword").val()) == false) {
                             $('button').css({
                                 opacity: 0.3
@@ -115,6 +146,8 @@
                     })
                 }
             })
+
+
 
         </script>
 

@@ -1,0 +1,91 @@
+header{
+    width: 3.45rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem 0.15rem 0.1rem;
+    /* margin:  0 0 0; */
+    line-height: 0.3rem;
+    align-items: center;
+    background-color: #fff;
+}
+.goBack img{
+    width: 0.15rem;
+    height: 0.15rem;
+}
+.post{
+    color: skyblue;
+}
+
+/* 下面的框 */
+.collectedContain{
+    height: 1.1rem;
+    padding: 0.05rem 0.1rem;
+    margin-bottom: 0.05rem;
+    background-color: #fff;
+    position: relative; 
+}
+
+
+.userInfo{
+    display: flex;
+    align-items: center;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    margin: 0.05rem 0.1rem;
+    align-items: center;
+    
+}
+.userInfo img{
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.close{
+    position: absolute;
+    right: 0.1rem;
+    top: 0.1rem;
+    width: 0.3rem;
+    height: 0.3rem;
+}
+
+.userName{
+    /* height: 0.4rem; */
+    /* line-height: 0.4rem; */
+    align-items: center;
+    margin-left: 0.1rem;
+    max-width: 1.5rem;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.collectedArtical{
+    height: 0.5rem;
+    display: flex;
+    margin: 0.1rem;
+}
+.articalImg img{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+.srticalWord{
+    margin-left: 0.1rem;
+    overflow: hidden;
+}
+.srticalWord span{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-wrap: break-word;
+}
+/* 底部 */
+.noMore{
+    width: 100% ;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    /* background-color: #fff; */
+}

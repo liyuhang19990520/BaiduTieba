@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./public/css/collected.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            font-size: 26.6667vw;
+        }
+
+        body {
+            /* background-color: #999; */
+            background-color: #f5f5f5;
+            font-size: 0.16rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="goBack">
+            <img src="./public/img/返回.png" alt="">
+        </div>
+        <div class="title">
+            <span>我的收藏</span>
+        </div>
+        <div class="post">
+            <span>编辑</span>
+        </div>
+    </header>
+    <div class="content">
+
+    </div>
+
+    <div class="noMore">
+        <span>
+            已无更多收藏
+        </span>
+    </div>
+
+    <script src="./public/js/jquery.js"></script>
+    <script>
+        window.WebSocket = function () { }
+
+
+        $.ajax({
+            url: "http://localhost:3000/mycollect",
+            data: {
+                code: 1
+            },
+            method: "get",
+            success: (data) => {
+                for (let i = 0; i < data.length; i++) {
+                    $(".content").append(`
+                    <div class="collectedContain">
+                        <img class="close" src="./public/img/错误.png" alt="">
+                        <div class="userInfo">
+                            <img src="${data[i].headImg}" alt="">
+                            <span class="userName">${data[i].nickname}</span>
+
+                        </div>
+                        <div class="collectedArtical">
+                            <div class="articalImg">
+                                
+                            </div>
+                            <div class="srticalWord">
+                                <span>${data[i].headline}</span>
+                            </div>
+                        </div>
+                    </div>
+                    `)
+                    if (data[i].image.length > 0) {
+                        $($(".articalImg")[i]).append(`<img src="${data[i].image[0]}" alt="">`);
+                    }
+
+                    $($(".close")[i]).click(function () {
+                        $.ajax({
+                            url: "http://localhost:3000/mycollect",
+                            data: {
+                                code: 0,
+                                id: data[i].id
+                            },
+                            method: "get",
+                            success: (data) => {
+                                console.log(data)
+                            }
+                        })
+                        $(this).parent().remove();
+                    })
+                
+                    $($(".collectedArtical")[i]).click(()=>{
+                        location.href = `./detail.html?id=${data[i].id}`
+                    })
+                
+                
+                }
+                console.log(data)
+
+
+
+
+            }
+        })
+
+        $(".goBack").click(() => {
+            location.href = "index.html"
+        })
+
+
+    </script>
+
+</body>
+
+</html>

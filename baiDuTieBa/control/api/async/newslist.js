@@ -23,7 +23,7 @@ async function main(req) {
         }
         return obj;
     } else {
-        // console.log(sea)
+
         let PaData = await postDataAll({ headline: { $regex: sea, $options: '$i' } })
         let obj = []
         for (let i = 0; i < PaData.length; i++) {

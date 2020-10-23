@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>关注</button>
+
+    <script src="./public/js/jquery.js"></script>
+    <script>
+        window.WebSocket = function () {
+
+        }
+        //资料
+        $.ajax({
+            url: "http://localhost:3000/firend",
+            method: "get",
+            data: location.search.substr(1),
+            success: (data) => {
+                console.log(data)
+            }
+        })
+
+        //点击取关加关注
+        $("button").click(() => {
+            $.ajax({
+                url: "http://localhost:3000/addAtt",
+                method: "post",
+                data: location.search.substr(1),
+                success: (data) => {
+                    if (data == 1) {
+                        $("button").html("取消关注")
+                    } else {
+                        $("button").html("关注")
+                    }
+                }
+            })
+        })
+
+        //是否关注
+        $.ajax({
+            url: "http://localhost:3000/newAddAtt",
+            method: "post",
+            data: location.search.substr(1),
+            success: (data) => {
+                console.log(data)
+                if (data == 1) {
+                    $("button").html("关注")
+                } else if (data == 0) {
+                    $("button").html("取消关注")
+                } else if(data == 2){
+                    $("button").remove();
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

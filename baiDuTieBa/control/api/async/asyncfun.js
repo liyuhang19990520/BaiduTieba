@@ -1,7 +1,8 @@
 const POSTS = require('../../model/POSTS')
 const USER = require('../../model/USER')
 const REVIEW = require("../../model/REVIEW")
-
+const COLLECT = require("../../model/COLLECT")
+const LIKE = require("../../model/LIKE")
 
 
 
@@ -50,8 +51,32 @@ function reviewDataAll(obj) {
         })
     })
 }
+function collectDataAll(obj) {
+    return new Promise((resole, reject) => {
+        COLLECT.find(obj, (err, result) => {
+            if (!err) {
+                resole(result);
+            } else {
+                reject();
+            }
+        })
+    })
+}
+function likeDataAll(obj) {
+    return new Promise((resole, reject) => {
+        LIKE.find(obj, (err, result) => {
+            if (!err) {
+                resole(result);
+            } else {
+                reject();
+            }
+        })
+    })
+}
 
 exports.postDataID = postDataID;
 exports.userDataAll = userDataAll;
 exports.postDataAll = postDataAll;
 exports.reviewDataAll = reviewDataAll;
+exports.likeDataAll = likeDataAll;
+exports.collectDataAll = collectDataAll;

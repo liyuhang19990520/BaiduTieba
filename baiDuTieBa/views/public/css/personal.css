@@ -201,6 +201,7 @@ main .fensi {
 
 main .guanzhu>li,
 main .fensi>li {
+  position: relative;
   width: 33.33%;
   height: 1rem;
   border-right: 0.01rem solid #eee;
@@ -210,10 +211,58 @@ main .fensi>li {
   font-size: 0.12rem;
 }
 
+
+main .guanzhu .wrong,
+main .fensi .wrong {
+  width: 0.24rem;
+  height: 0.24rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0!important;
+  border-radius: 50%;
+}
 main .guanzhu img,
 main .fensi img {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
   margin: 0.15rem 0 0.05rem 0;
+}
+
+/* 我的喜欢 */
+.myloveBox{
+  max-width: 94vw;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 0.1rem;
+  border-bottom: 0.01rem solid #ccc;
+}
+.myloveBox:first-of-type{
+  margin-top: 0.05rem;
+}
+.myloveTitle{
+  font-size: 0.16rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.myloveUser{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.12rem;
+  padding: 0.1rem 0;
+  color: #A3A8AD;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.myloveBox img{
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 0.05rem;
 }

@@ -86,16 +86,16 @@
                 </div>
                 <div class="home-tab">
                     <div>
-                        <p>0</p>
+                        <p class="attnum">0</p>
                         <p>关注</p>
                     </div>
                     <div>
-                        <p>0</p>
+                        <p class="fansnum">0</p>
                         <p>粉丝</p>
                     </div>
                     <div>
                         <p class="myreviews">0</p>
-                        <p>我的评论</p>
+                        <p>我的点赞</p>
                     </div>
                     <div>
                         <p class="myposts">0</p>
@@ -143,7 +143,8 @@
                 </div>
                 <div class="downloadBox">
                     <div class="download">
-                        <img src="https://tb2.bdstatic.com/tb/mobile/tbwisecommon/img/components/tieba_h5/tb-footer/images/footer_icon.png" alt="">
+                        <img src="https://tb2.bdstatic.com/tb/mobile/tbwisecommon/img/components/tieba_h5/tb-footer/images/footer_icon.png"
+                            alt="">
                         <p>年轻人的潮流文化社区</p>
                         <button>立即下载</button>
                     </div>
@@ -217,36 +218,66 @@
                                 <div>
                                     <img src="${element}" alt="">
                                 </div>
-                                `)
+                        `)
                     });
+                    if (data[i].image.length == 0) {
+                        $($(".posts")[i]).find(".img-box").remove()
+                    }
 
                     $($('.posts')[i]).click(() => {
                         location.href = `./detail.html?id=${data[i]._id}`
                     })
+
+                    $($('.headImgBox')[i]).click((e) => {
+                        e.stopPropagation();
+                        location.href = `./firendmaterial.html?user=${data[i].posterUser}`
+                    })
+
+                    
+
+
+
+
                 }
             }
         })
 
-        //资料详情
-        //修改资料跳转
-        //修改密码跳转
-        //搜索跳转
+        //账号安全
         $(".safe").click(() => {
             location.href = "security.html"
         })
         //发帖
+        //资料详情
+        //修改资料跳转
+        //修改密码跳转
+        //搜索跳转
         $.ajax({
             url: "http://localhost:3000/status",
             method: "post",
             success: (data) => {
                 console.log(data)
                 if (data.length != 0) {
+                    $.ajax({
+                        url: "http://localhost:3000/mycollect",
+                        data: {
+                            code: 2
+                        },
+                        method: "get",
+                        success: (data) => {
+                            $(".myreviews").html(data.length)
+                            console.log(data)
+                        }
+                    })
+
+
                     $(".personImg").attr("src", data[0].headImg)
                     $(".nickname").html(data[0].nickname);
                     $(".describe").html("查看个人主页和资料编辑")
                     $(".home-tab").css("display", "flex");
                     $(".safe").css("display", "block");
                     $(".logout").css("display", "block");
+                    $(".fansnum").html(data[0].fans.length)
+                    $(".attnum").html(data[0].followee.length)
                     $(".downloadBox").css("display", "none");
                     $(".nowLogin").css("display", "none");
                     $(".login").click(() => {
@@ -292,15 +323,6 @@
             window.location.reload()
         })
 
-        //我的评论
-        $.ajax({
-            url: 'http://localhost:3000/myReview',
-            method: "post",
-            success: (data) => {
-                $(".myreviews").html(data)
-            }
-        })
-
         //我的帖子
         $.ajax({
             url: 'http://localhost:3000/myposts',
@@ -309,6 +331,14 @@
                 $(".myposts").html(data.length)
             }
         })
+        //我的收藏跳转
+        $(".user-select").eq(0).click(() => {
+            location.href = "collected.html"
+        })
+        //我的点赞
+
+
+
     </script>
 </body>
 
