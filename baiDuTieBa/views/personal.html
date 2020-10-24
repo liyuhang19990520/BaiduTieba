@@ -184,6 +184,9 @@
             </li>
           `)
 
+          $($(".guanzhu > li")[i]).click(() => {
+            location.href = `firendmaterial.html?user=${data[i].username}`
+          })
           // $($(".wrong")[i]).click(function () {
           //   $(this).parent().remove();
           //   let num = $(".attNum").html()
@@ -221,6 +224,10 @@
             
             </li>
           `)
+
+          $($(".fensi > li")[i]).click(() => {
+            location.href = `firendmaterial.html?user=${data[i].username}`
+          })
         }
 
       }

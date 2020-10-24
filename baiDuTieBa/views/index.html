@@ -33,44 +33,8 @@
         <div class="content">
             <div class="recommend">
                 <div class="box">
-                    <!-- <div class="posts">
-                        <div class="headBox">
-                            <div class="headImgBox">
-                                <img class="headImg" src="./img/default.jpg" alt="">
-                            </div>
-                            <div class="userBox">
-                                <div class="userName">艾滋病死亡</div>
-                                <div class="time">
-                                    <div>王思聪吧</div>
-                                    <div>|</div>
-                                    <div>2020-10-17 20:50:17</div>
-                                </div>
-                            </div>
-                        </div>
-                        <h4>艾滋病</h4>
-                        <p class="postContent">艾滋病</p>
-                        <div class="img-box">
-                            <div>
-                                <img src="https://dss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3186208452,3395197656&fm=202&mola=new&crop=v1"
-                                    alt="">
-                            </div>
-                            <div>
-                                <img src="https://dss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3186208452,3395197656&fm=202&mola=new&crop=v1"
-                                    alt="">
-                            </div>
-                            <div>
-                                <img src="https://dss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3186208452,3395197656&fm=202&mola=new&crop=v1"
-                                    alt="">
-                            </div>
-                            <div>
-                                <img src="https://dss3.baidu.com/-rVXeDTa2gU2pMbgoY3K/it/u=3186208452,3395197656&fm=202&mola=new&crop=v1"
-                                    alt="">
-                            </div>
-                        </div>
-                        <div class="review">
-                            <img src="./public/img/消息.png" alt=""><span>11111</span>
-                        </div>
-                    </div> -->
+                    
+
                 </div>
             </div>
             <div class="me">
@@ -161,7 +125,10 @@
     <script src="./public/js/datechange.js"></script>
     <script>
         window.WebSocket = function () { }
-        console.log();
+  
+        
+
+
 
         //选项卡
         for (let i = 0; i < $(".listTitle div").length; i++) {
@@ -214,9 +181,9 @@
                     </div>`)
 
                     data[i].image.forEach(element => {
-                        $($(".img-box")[i]).append(`
+                        $($(".posts")[i]).find(".img-box").append(`
                                 <div>
-                                    <img src="${element}" alt="">
+                                    <div class="hei"><img src="${element}" alt=""></div>
                                 </div>
                         `)
                     });
@@ -232,13 +199,11 @@
                         e.stopPropagation();
                         location.href = `./firendmaterial.html?user=${data[i].posterUser}`
                     })
-
+      
                     
-
-
-
-
                 }
+                
+
             }
         })
 

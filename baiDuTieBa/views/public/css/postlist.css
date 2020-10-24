@@ -45,6 +45,7 @@ body {
 }
 .headImg{
     width: 0.4rem;
+    height: 0.4rem;
 }
 .userBox{
     width: 2.9rem;
@@ -74,20 +75,36 @@ body {
     display: flex;
     justify-content: flex-start;
     overflow: hidden;
-    height: 0.77rem;
+}
+.hei{
+    width: 100%;
+    height: 0!important;
+    padding-top: 100%!important;
+    position: relative;
+    overflow: hidden;  
 }
 
-.img-box div {
+.img-box > div {
+    position: relative;
     flex: 1;
     height: 100%;
     padding: 0.05rem 0.05rem 0.03rem 0.05rem;
     min-width: 1.15rem;
 }
+
 .img-box div img{
+    position: absolute;
+    bottom: 0rem;
+    left: 0;
     width: 100%;
+    /* height: 100%; */
     min-height: 100%;
 }
+.box{
+    display: flex;
+    flex-flow: column-reverse;
 
+}
 h4 {
     padding: 0.1rem 0.1rem;
 }

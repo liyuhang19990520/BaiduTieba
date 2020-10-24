@@ -44,27 +44,15 @@
         <div class="containerWord">
             <textarea type="text" cols="" rows="" placeholder="来吧，尽情发挥吧..."></textarea>
         </div>
-        <div class="updatePhoto">
+        <form action="" class="updatePhoto">
             <img src="./public/img/上传图片 (2).png" alt="">
-            <input type="file" multiple="multiple">
-        </div>
+            <input type="file" multiple="multiple" name="file" id="file">
+        </form>
         <div class="picPack">
             <!-- <div>
-                <img src="icon/默认头像.jpg" alt="">
-                <img src="icon/关  闭.png" alt="" class="close">
-            </div>
-            <div>
-                <img src="icon/默认头像.jpg" alt="">
-                <img src="icon/关  闭.png" alt="" class="close">
-            </div>
-            <div>
-                <img src="icon/默认头像.jpg" alt="">
-                <img src="icon/关  闭.png" alt="" class="close">
+                <img src="${fs.result}" alt="">
+                <img src="./public/img/关  闭.png" alt="" class="close">
             </div> -->
-
-
-
-
         </div>
     </div>
 
@@ -80,34 +68,47 @@
     <script>
         window.WebSocket = function () { }
         //上传图片
-        var updatePhoto = document.querySelector(".updatePhoto input");
-        updatePhoto.onchange = function () {
-            console.log(updatePhoto.files.length)
-            for (let i = 0; i < updatePhoto.files.length; i++) {
-                let fs = new FileReader;
-                fs.readAsDataURL(updatePhoto.files[i]);
-                fs.onload = function () {
-                    $(".picPack").append(`
-                    <div>
-                        <img src="${fs.result}" alt="">
-                        <img src="./public/img/关  闭.png" alt="" class="close">
-                    </div>
-                    `)
+        $("#file").on("change", function () {
+            var formDate = new FormData()
+            console.log($("#file")[0].files.length)
+            for (let i = 0; i < $("#file")[0].files.length; i++) {
+                formDate.append("file", $("#file")[0].files[i])
+            }
+            $.ajax({
+                url: "http://localhost:3000/addpost",
+                type: "post",
+                data: formDate,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    console.log()
+                    data.forEach(element => {
+                        $(".picPack").append(`
+                        <div>
+                            <img src="http://127.0.0.1:5501/baiDuTieBa${element.path.substr(2)}" alt="" class="contImg">
+                            <img src="./public/img/关  闭.png" alt="" class="close">
+                        </div>
+                        `)
+                    });
                     $(".close").click(function () {
                         $(this).parent().remove();
                     })
                 }
-            }
-        }
+            })
+        })
 
 
+
+
+        //点击提交
         $(".post").click(() => {
-            var arr = [];
-            for (let i = 0; i < $(".close").length; i++) {
-                arr.push($($(".close")[i]).prev().attr("src"));
+            let arr = [];
+            for (let i = 0; i < $(".contImg").length; i++) {
+                arr.push($(".contImg")[i].src)
             }
+            console.log(arr)
             $.ajax({
-                url: "http://localhost:3000/addpost",
+                url: "http://localhost:3000/creatpost",
                 method: "post",
                 data: {
                     content: $(".containerWord textarea").val(),
@@ -116,16 +117,17 @@
                 }
                 ,
                 success: (data) => {
-
+                    if(data==1){
+                        location.href = "index.html"
+                    }else{
+                        alert("网络错误")
+                    }
                 }
             })
         })
 
 
-        //删除图片
-        $(".close").click(function () {
-            $(this).parent().remove();
-        })
+
         //点击跳转主页
         $(".goBack").click(() => {
             location.href = "index.html"

@@ -33,10 +33,14 @@ app.get('/posts/list', require('./api/posts/list'))  //获取帖子列表
 
 //帖子详情
 app.get('/posts/detail', require('./api/posts/detail'))  //获取帖子详情
-// 发帖
+// 上传图片
 app.post("/addpost", require('./api/posts/addpost'))
+// 上传帖子
+app.post("/creatpost", require('./api/posts/creatpost'))
 // 注册
 app.post('/register', require('./api/user/register'))
+// 修改资料
+app.post('/upinfor', require('./api/user/upinfor'))
 // 信息
 app.post('/information', require('./api/user/information'))
 // 用户名

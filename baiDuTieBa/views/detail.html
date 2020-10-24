@@ -36,7 +36,7 @@
 
         <!-- 评论框 -->
         <div class="commentInputBox">
-            <img src="./public/img/默认头像.jpg" alt="" class="commentUserPic">
+            <img src="./public/img/default.jpg" alt="" class="commentUserPic">
             <input type="text" placeholder="我来评论" class="commentInput">
         </div>
         <!-- 点击评论框显示 -->
@@ -103,7 +103,7 @@
         window.WebSocket = function () { }
 
 
-        
+
         // str = str.replace(/ GMT.+$/, '');// Or str = str.substring(0, 24)
         // var d = new Date(str);
         // var a = [d.getFullYear(), d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds()];
@@ -120,8 +120,8 @@
 
         var str = 'Fri Sep 20 2019 16:37:39 GMT+0800 (中国标准时间)';
 
-        
-      
+
+
 
 
 
@@ -375,7 +375,9 @@
             url: "http://localhost:3000/status",
             method: "post",
             success: (data) => {
-                $(".commentUserPic").attr("src", data[0].headImg)
+                if (data.length != 0) {
+                    $(".commentUserPic").attr("src", data[0].headImg)
+                }
             }
         })
         //点赞数

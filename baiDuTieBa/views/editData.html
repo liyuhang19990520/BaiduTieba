@@ -37,6 +37,9 @@
 
         </div>
         <div class="headDesc">
+            <form action="">
+                <input type="file" name="file" id="file">
+            </form>
             <div class="changeHI">更改头像<img src="./public/img/择律-付费咨询列表页分割箭头.png" alt=""></div>
             <span class="changeTips">上传大图可能较缓慢</span>
         </div>
@@ -71,25 +74,62 @@
 
     <script src="./public/js/jquery.js"></script>
     <script>
-        window.WebSocket = function(){}
+        window.WebSocket = function () { }
         $(".blue-kit > img").click(() => {
             location.href = "personal.html"
         })
 
-
+        //进入读取资料
         $.ajax({
             url: "http://localhost:3000/status",
             method: "post",
             success: (data) => {
                 console.log(data)
-                $(".headImg img").attr("src",data[0].headImg)
+                $(".headImg img").attr("src", data[0].headImg)
                 $(".headImg p").html(data[0].nickname)
                 $(".nickname input").val(data[0].nickname)
-                $(`.sexChoice input[value=${data[0].sex}]`).attr("checked","checked");
+                $(`.sexChoice input[value=${data[0].sex}]`).attr("checked", "checked");
                 $(".birthDate input").val(data[0].birth)
                 $(".emailUrl input").val(data[0].email)
-               
+
             }
+        })
+        //上传头像
+        $("#file").on("change", function () {
+            var formDate = new FormData()
+            formDate.append("file", $("#file")[0].files[0])
+            $.ajax({
+                url: "http://localhost:3000/addpost",
+                type: "post",
+                data: formDate,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $(".headImg img").attr("src", `http://127.0.0.1:5501/baiDuTieBa${data[0].path.substr(2)}`)
+                    console.log(data)
+                }
+            })
+        })
+
+        //保存修改
+        $(".saveData input").click(() => {
+            $.ajax({
+                url: "http://localhost:3000/upinfor",
+                data: {
+                    headImg: $(".headImg img").attr("src"),
+                    nickname: $(".nickname input").val(),
+                    birth: $(".birthDate input").val(),
+                    email: $(".emailUrl input").val(),
+                    sex: $(`.sexChoice input:checked`).val()
+
+                },
+                method: "post",
+                success: (data) => {
+                    if (data == 1) {
+                        location.href = "personal.html"
+                    }
+                }
+            })
         })
     </script>
 </body>

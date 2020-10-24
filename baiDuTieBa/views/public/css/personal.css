@@ -189,7 +189,6 @@ main .content .con {
 
 main .content>ul>li:nth-of-type(1)>ul>li img {
   width: 2rem;
-  height: 2rem;
   margin: 0.1rem 0;
 }
 
